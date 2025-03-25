@@ -1,0 +1,43 @@
+<!-- file1:  factorial-log.php -->
+<form action="find-factorial.php" method="get">
+<input type="text" name="studentname" placeholder="Enter your name" required>    
+<input type="number" name="n" placeholder="Enter a number to find its factorial" required min="2">
+<input type="submit" value="Submit" name="findFactorial">
+</form>
+
+<!-- file2:  find-factorial.php -->
+<?php
+if(isset($_GET['findFactorial'])) {
+    $name = $_GET['studentname'] ?? "ANON";
+    $n = $_GET['n'] ?? 1;//null coalescing operator ??
+    
+    //log the search in a file
+    $fh = fopen("factorial-log.txt", "a");
+    fwrite($fh, "$name: searched for Factorial of $n at " . date('Y-m-d H:i:s a') . "\n");
+    fclose($fh);
+    $f = 1;
+    for ($i=1; $i <= $n ; $i++) { 
+        $f = $f * $i;
+    }
+    $message =  "Hey $name, Factorial of $n =  " . $f;
+    header("Location: result.php?message=$message"); 
+}
+?>
+
+
+<!-- file3:  result.php -->
+<?php
+if(isset($_GET['message'])) {
+    $message = $_GET['message'];
+    echo <<<ALERT
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        $message . <a href="factorial-log.php">Find Factorial</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    ALERT;
+}
+?>
+<a href="factorial-log.php" class="btn btn-outline-primary">Factorial</a>
+
+
+Pls explain the value passing, logging in these 3 files. how data are sent to the server from html to php and how results are shown?
