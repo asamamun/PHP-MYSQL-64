@@ -6,13 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>isset returns boolean value</h1>
-    <h1>if a variable's value is found isset will return TRUE, otherwise FALSE</h1>
-
+    <pre>
+        <code>
+do {
+ statements
+} while (expression);
+        </code>
+    </pre>
+    <hr>
     <?php
-    $n = 8;
-    if(isset($n)) echo "P";
-    else echo "Q";
+    $x = 11;
+    do {
+        echo "Hello World $x<br>";
+        $x++;
+    } while($x < 10);
     ?>
 </body>
 </html>

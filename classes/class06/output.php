@@ -34,7 +34,7 @@
     $total = 100;
     $topic = "200 tonic water";
     printf("<h1>$company</h1>");
-    printf("Bar inventory: %.2f bottles of %f.<br>", $total, $topic);
+    printf("Bar inventory: %.2f bottles of %0.3f.<br>", $total, $topic);
     printf("%d bottles of tonic water cost Tk %.3f.<br>", 100, 43.20);
     printf("$%.2f<br>", 43.2);
     ?>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP foreach Truth Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    code {
+      background: #eee;
+      padding: 3px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Example 1: Basic foreach Loop</h2>
+  <pre><code>
+$colors = ["red", "green", "blue"];
+
+foreach ($colors as $color) {
+    echo $color . "&lt;br&gt;";
+}
+  </code></pre>
+
+  <h3>Execution Table:</h3>
+  <table>
+    <tr>
+      <th>Iteration</th>
+      <th>$key (implicit)</th>
+      <th>$color (value)</th>
+      <th>Output</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>red</td>
+      <td>red&lt;br&gt;</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>green</td>
+      <td>green&lt;br&gt;</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>blue</td>
+      <td>blue&lt;br&gt;</td>
+    </tr>
+  </table>
+
+  <h2>Example 2: foreach with Key => Value</h2>
+  <pre><code>
+$colors = [
+    "primary" => "red",
+    "secondary" => "green",
+    "tertiary" => "blue"
+];
+
+foreach ($colors as $key => $color) {
+    echo "$key: $color&lt;br&gt;";
+}
+  </code></pre>
+
+  <h3>Execution Table:</h3>
+  <table>
+    <tr>
+      <th>Iteration</th>
+      <th>$key</th>
+      <th>$color</th>
+      <th>Output</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>primary</td>
+      <td>red</td>
+      <td>primary: red&lt;br&gt;</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>secondary</td>
+      <td>green</td>
+      <td>secondary: green&lt;br&gt;</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>tertiary</td>
+      <td>blue</td>
+      <td>tertiary: blue&lt;br&gt;</td>
+    </tr>
+  </table>
+
+</body>
+</html>
