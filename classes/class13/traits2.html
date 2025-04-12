@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proper Code Formatting Example</title>
+    <style>
+        .card {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            margin: 15px 0;
+            font-size: 0.95em;
+            white-space: pre;
+            line-height: 1.5;
+        }
+        
+        .keyword { color: #f92672; }
+        .class { color: #a6e22e; }
+        .method { color: #66d9ef; }
+        .property { color: #fd971f; }
+        .string { color: #fdcb6e; }
+        .comment { color: #75715e; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        
+        <h1 class="card-title">PHP Traits</h1>
+        
+        <p>Traits are a mechanism for code reuse in single inheritance languages like PHP.</p>
+        
+        <div class="note">
+            <strong>Definition:</strong> A trait is similar to a class, but intended to group functionality in a fine-grained and consistent way.
+        </div>
+        
+        <div class="code-block"><span class="keyword">trait</span> <span class="class">Timestamps</span> {
+    <span class="keyword">protected</span> <span class="property">$createdAt</span>;
+    
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">setCreatedAt</span>() {
+        <span class="keyword">$this</span>-&gt;<span class="property">$createdAt</span> = <span class="keyword">time</span>();
+    }
+}
+
+<span class="keyword">trait</span> <span class="class">SoftDeletes</span> {
+    <span class="keyword">protected</span> <span class="property">$deleted</span> = <span class="keyword">false</span>;
+    
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">delete</span>() {
+        <span class="keyword">$this</span>-&gt;<span class="property">$deleted</span> = <span class="keyword">true</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class">Post</span> {
+    <span class="keyword">use</span> <span class="class">Timestamps</span>, <span class="class">SoftDeletes</span>;
+    
+    <span class="keyword">public</span> <span class="keyword">function</span> __construct() {
+        <span class="keyword">$this</span>-&gt;<span class="method">setCreatedAt</span>();
+    }
+}
+
+<span class="property">$post</span> = <span class="keyword">new</span> <span class="class">Post</span>();
+<span class="property">$post</span>-&gt;<span class="method">delete</span>();</div>
+
+        <h2>Key Improvements:</h2>
+        <ul>
+            <li>Added <code>white-space: pre</code> to preserve all formatting</li>
+            <li>Properly escaped HTML characters (like &gt;)</li>
+            <li>Maintained original indentation</li>
+            <li>Added syntax highlighting classes</li>
+            <li>Set a monospace font for proper code alignment</li>
+        </ul>
+    </div>
+</body>
+</html>

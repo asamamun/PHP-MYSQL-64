@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Concepts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            text-align: center;
+            color: #333;
+            font-size: 18px;
+        }
+        .card p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .card ul {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .card ul li {
+            list-style-type: disc;
+        }
+        .card code {
+            background-color: #f8f8f8;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>1. General Language Features of PHP</h2>
+        <p>PHP is a server-side scripting language with the following features:</p>
+        <ul>
+            <li>Open-source</li>
+            <li>Interpreted language</li>
+            <li>Dynamic typing</li>
+            <li>Cross-platform</li>
+            <li>Embedded in HTML</li>
+            <li>Built-in database support</li>
+            <li>Object-Oriented Programming (OOP)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>2. Difference Between <code>include</code> and <code>require</code></h2>
+        <p><code>include</code> gives a warning if the file is not found and continues execution, while <code>require</code> results in a fatal error and stops execution if the file is not found.</p>
+    </div>
+
+    <div class="card">
+        <h2>3. Super Global Variables</h2>
+        <p>Super global variables in PHP are accessible from any scope:</p>
+        <ul>
+            <li><code>$_GET</code></li>
+            <li><code>$_POST</code></li>
+            <li><code>$_REQUEST</code></li>
+            <li><code>$_SESSION</code></li>
+            <li><code>$_COOKIE</code></li>
+            <li><code>$_SERVER</code></li>
+            <li><code>$_FILES</code></li>
+            <li><code>$_ENV</code></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. What Is an Array? How to Output an Array?</h2>
+        <p>An array is a data structure that holds multiple values. You can output an array using <code>print_r()</code> or <code>var_dump()</code>.</p>
+        <code>print_r($array);</code>
+    </div>
+
+    <div class="card">
+        <h2>5. Recursive Function</h2>
+        <p>A recursive function calls itself to solve problems that can be broken into smaller sub-problems.</p>
+        <code>function factorial($n) { if ($n == 0) return 1; return $n * factorial($n - 1); }</code>
+    </div>
+
+    <div class="card">
+        <h2>6. Passing Argument by Reference</h2>
+        <p>Passing by reference allows a function to modify the original variable.</p>
+        <code>function increment(&$value) { $value++; }</code>
+    </div>
+
+    <div class="card">
+        <h2>7. PHP and Apache Configuration Files</h2>
+        <p>PHP configuration: <code>php.ini</code></p>
+        <p>Apache configuration: <code>httpd.conf</code>, <code>.htaccess</code></p>
+    </div>
+
+    <div class="card">
+        <h2>8. Constant Declaration</h2>
+        <p>Constants are values that cannot be changed once declared. Use <code>define()</code> to declare constants.</p>
+        <code>define("PI", 3.14159);</code>
+    </div>
+
+    <div class="card">
+        <h2>9. Type Casting and Type Juggling</h2>
+        <p>Type casting is explicit conversion between data types. Type juggling is PHP's automatic conversion of data types.</p>
+        <code>$var = (int) $value;</code>
+    </div>
+
+    <div class="card">
+        <h2>10. Ternary Operator and Null Coalescing Operator</h2>
+        <p>Use the ternary operator for simple conditionals and null coalescing for checking null values:</p>
+        <code>$status = ($age >= 18) ? "Adult" : "Minor";</code>
+        <code>$username = $_GET['user'] ?? 'Guest';</code>
+    </div>
+
+    <div class="card">
+        <h2>11. <code>BREAK</code> and <code>CONTINUE</code> Inside a Loop</h2>
+        <p><code>BREAK</code> exits the loop, and <code>CONTINUE</code> skips to the next iteration.</p>
+        <code>if ($i == 3) { continue; }</code>
+        <code>if ($i == 5) { break; }</code>
+    </div>
+
+</body>
+</html>

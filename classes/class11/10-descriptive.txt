@@ -1,0 +1,11 @@
+What are the general language features of php?
+difference between include and require function in php.
+What is super global variable? Write name of some superglobal variable?
+What Is an Array? How to output an array?
+What is recursive function?
+Discuss passing argument by reference?
+What are the configurations files of php and apache?
+What is constant? How can you declare a constant?
+Discuss type casting and type juggling.
+Give example of  ternary operator and Null Coalescing Operator
+What BREAK and CONTINUE statement do inside a loop?

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Namespace Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+            padding: 20px;
+            margin: 20px;
+        }
+        .card h2 {
+            text-align: center;
+            color: #333;
+        }
+        .code {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>PHP Namespace Example with Class and Method Conflict</h2>
+        
+        <div class="section">
+            <h3>1. Without Namespace (Conflict)</h3>
+            <p>In this example, we have two classes with the same name `Car`, each in different files. Both contain a method named `drive`.</p>
+            <div class="code">
+                <strong>File 1: Car.php</strong><br>
+                <code>
+                    &lt;?php<br>
+                    class Car {<br>
+                    &nbsp;&nbsp;public function drive() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "Driving car from File 1";<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    ?&gt;
+                </code>
+            </div>
+            <div class="code">
+                <strong>File 2: Car.php</strong><br>
+                <code>
+                    &lt;?php<br>
+                    class Car {<br>
+                    &nbsp;&nbsp;public function drive() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "Driving car from File 2";<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    ?&gt;
+                </code>
+            </div>
+            <p>If you try to use these classes in the same script, you'll get a fatal error due to the conflict in class names.</p>
+        </div>
+
+        <div class="section">
+            <h3>2. Solution Using Namespaces</h3>
+            <p>To resolve the conflict, you can use namespaces. Each class will be placed in a different namespace, ensuring they do not conflict.</p>
+            <div class="code">
+                <strong>File 1: NamespaceOne/Car.php</strong><br>
+                <code>
+                    &lt;?php<br>
+                    namespace NamespaceOne;<br>
+                    <br>
+                    class Car {<br>
+                    &nbsp;&nbsp;public function drive() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "Driving car from NamespaceOne";<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    ?&gt;
+                </code>
+            </div>
+            <div class="code">
+                <strong>File 2: NamespaceTwo/Car.php</strong><br>
+                <code>
+                    &lt;?php<br>
+                    namespace NamespaceTwo;<br>
+                    <br>
+                    class Car {<br>
+                    &nbsp;&nbsp;public function drive() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "Driving car from NamespaceTwo";<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    ?&gt;
+                </code>
+            </div>
+            <p>Now, each class is in its own namespace, and you can use them in the same script without conflicts.</p>
+        </div>
+
+        <div class="section">
+            <h3>3. Using the Classes</h3>
+            <p>Here's how you can use both classes in a single script:</p>
+            <div class="code">
+                <strong>Using the Namespaced Classes</strong><br>
+                <code>
+                    &lt;?php<br>
+                    // Include the files<br>
+                    require_once 'NamespaceOne/Car.php';<br>
+                    require_once 'NamespaceTwo/Car.php';<br>
+                    <br>
+                    // Use the classes with their namespaces<br>
+                    use NamespaceOne\Car as CarOne;<br>
+                    use NamespaceTwo\Car as CarTwo;<br>
+                    <br>
+                    // Instantiate objects from each namespace<br>
+                    $carOne = new CarOne();<br>
+                    $carTwo = new CarTwo();<br>
+                    <br>
+                    // Call the drive method from each<br>
+                    $carOne-&gt;drive(); // Output: Driving car from NamespaceOne<br>
+                    echo "&lt;br&gt;";<br>
+                    $carTwo-&gt;drive(); // Output: Driving car from NamespaceTwo<br>
+                    ?&gt;
+                </code>
+            </div>
+        </div>
+
+        <p>This solution shows how namespaces can help avoid naming conflicts, making your codebase cleaner and more maintainable.</p>
+    </div>
+</body>
+</html>

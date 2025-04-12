@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Class Inspection Functions</title>
+    <style>
+        .card {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            border-left: 5px solid #6a5acd;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #6a5acd;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        code {
+            background: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+        }
+        
+        .note {
+            background: #e7f5ff;
+            padding: 15px;
+            border-left: 4px solid #4dabf7;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>PHP Class Inspection Functions</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                    <th>Syntax</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>class_exists()</code></td>
+                    <td>Checks if a class has been defined</td>
+                    <td><code>class_exists(string $class, bool $autoload = true): bool</code></td>
+                    <td><code>class_exists('MyClass') // true/false</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_class()</code></td>
+                    <td>Returns the class name of an object</td>
+                    <td><code>get_class(object $object): string</code></td>
+                    <td><code>get_class($obj) // 'MyClass'</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_declared_classes()</code></td>
+                    <td>Returns an array of all declared classes</td>
+                    <td><code>get_declared_classes(): array</code></td>
+                    <td><code>print_r(get_declared_classes())</code></td>
+                </tr>
+                <tr>
+                    <td><code>is_subclass_of()</code></td>
+                    <td>Checks if an object/class is a subclass of another</td>
+                    <td><code>is_subclass_of(mixed $object, string $class): bool</code></td>
+                    <td><code>is_subclass_of($obj, 'ParentClass')</code></td>
+                </tr>
+                <tr>
+                    <td><code>method_exists()</code></td>
+                    <td>Checks if a class method exists</td>
+                    <td><code>method_exists(object|string $object, string $method): bool</code></td>
+                    <td><code>method_exists($obj, 'myMethod')</code></td>
+                </tr>
+                <tr>
+                    <td><code>property_exists()</code></td>
+                    <td>Checks if an object/class has a property</td>
+                    <td><code>property_exists(object|string $object, string $property): bool</code></td>
+                    <td><code>property_exists($obj, 'myProperty')</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_class_methods()</code></td>
+                    <td>Gets all methods of a class</td>
+                    <td><code>get_class_methods(object|string $object): array</code></td>
+                    <td><code>print_r(get_class_methods('MyClass'))</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_class_vars()</code></td>
+                    <td>Gets default properties of a class</td>
+                    <td><code>get_class_vars(string $class): array</code></td>
+                    <td><code>print_r(get_class_vars('MyClass'))</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_object_vars()</code></td>
+                    <td>Gets properties of an object</td>
+                    <td><code>get_object_vars(object $object): array</code></td>
+                    <td><code>print_r(get_object_vars($obj))</code></td>
+                </tr>
+                <tr>
+                    <td><code>get_parent_class()</code></td>
+                    <td>Retrieves the parent class name</td>
+                    <td><code>get_parent_class(object|string $object): string|false</code></td>
+                    <td><code>get_parent_class($obj) // 'ParentClass'</code></td>
+                </tr>
+                <tr>
+                    <td><code>interface_exists()</code></td>
+                    <td>Checks if an interface exists</td>
+                    <td><code>interface_exists(string $interface, bool $autoload = true): bool</code></td>
+                    <td><code>interface_exists('MyInterface')</code></td>
+                </tr>
+                <tr>
+                    <td><code>trait_exists()</code></td>
+                    <td>Checks if a trait exists</td>
+                    <td><code>trait_exists(string $trait, bool $autoload = true): bool</code></td>
+                    <td><code>trait_exists('MyTrait')</code></td>
+                </tr>
+                <tr>
+                    <td><code>is_a()</code></td>
+                    <td>The is_a() function returns TRUE if object belongs to a class of type class_name or if it 
+                        belongs to a class that is a child of class_name.</td>
+                    <td><code>boolean is_a(object object, string class_name)</code></td>
+                    <td><code>is_a($obj, 'MyClass')</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <strong>Usage Notes:</strong>
+            <ul>
+                <li>These functions are useful for reflection and introspection</li>
+                <li>Many accept either class names (strings) or object instances</li>
+                <li>The <code>$autoload</code> parameter determines if the autoloader should be called</li>
+                <li>For more advanced reflection, see PHP's <code>ReflectionClass</code></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

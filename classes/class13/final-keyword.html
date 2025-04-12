@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP final Keyword</title>
+    <style>
+        .card {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            border-left: 5px solid #6a5acd;
+        }
+        
+        .card-title {
+            color: #2d3436;
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid #dfe6e9;
+            padding-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #2d3436;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        
+        .keyword { color: #ff7675; }
+        .class { color: #55efc4; }
+        .method { color: #74b9ff; }
+        .property { color: #fd971f; }
+        .string { color: #fdcb6e; }
+        .comment { color: #636e72; }
+        .error { color: #ff7675; font-weight: bold; }
+        
+        .note {
+            background: #fff9e6;
+            padding: 12px;
+            border-left: 4px solid #ffeaa7;
+            margin: 20px 0;
+            font-size: 0.9em;
+            border-radius: 4px;
+        }
+        
+        .section-title {
+            color: #6a5acd;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 class="card-title">PHP <span class="keyword">final</span> Keyword</h1>
+        
+        <p>The <span class="keyword">final</span> keyword prevents child classes from overriding methods or constants, and prevents class inheritance entirely.</p>
+        
+        <h2 class="section-title">1. Final Methods</h2>
+        
+        <div class="code-block">
+<span class="keyword">class</span> <span class="class">ParentClass</span> {
+    <span class="comment">// This method cannot be overridden</span>
+    <span class="keyword">final</span> <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">criticalOperation</span>() {
+        <span class="keyword">return</span> <span class="string">"This operation must not be changed"</span>;
+    }
+    
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">normalMethod</span>() {
+        <span class="keyword">return</span> <span class="string">"This can be overridden"</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class">ChildClass</span> <span class="keyword">extends</span> <span class="class">ParentClass</span> {
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">normalMethod</span>() {
+        <span class="keyword">return</span> <span class="string">"Overridden version"</span>;
+    }
+    
+    <span class="error">// This would cause a fatal error:</span>
+    <span class="error">/*</span>
+    <span class="error">final public function criticalOperation() {</span>
+    <span class="error">    return "Trying to override";</span>
+    <span class="error">}</span>
+    <span class="error">*/</span>
+}
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> Attempting to override a final method results in a fatal error: <em>"Cannot override final method ParentClass::criticalOperation()"</em>
+        </div>
+        
+        <h2 class="section-title">2. Final Classes</h2>
+        
+        <div class="code-block">
+<span class="keyword">final</span> <span class="keyword">class</span> <span class="class">SecureDatabase</span> {
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="method">connect</span>() {
+        <span class="keyword">return</span> <span class="string">"Secure connection established"</span>;
+    }
+}
+
+<span class="error">// This would cause a fatal error:</span>
+<span class="error">/*</span>
+<span class="error">class HackAttempt extends SecureDatabase {</span>
+<span class="error">    public function connect() {</span>
+<span class="error">        return "Hacked!";</span>
+<span class="error">    }</span>
+<span class="error">}</span>
+<span class="error">*/</span>
+
+<span class="comment">// But can be used normally:</span>
+<span class="property">$db</span> = <span class="keyword">new</span> <span class="class">SecureDatabase</span>();
+<span class="keyword">echo</span> <span class="property">$db</span>-><span class="method">connect</span>(); <span class="comment">// Works fine</span>
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> Attempting to extend a final class results in: <em>"Class HackAttempt may not inherit from final class (SecureDatabase)"</em>
+        </div>
+        
+        <h2 class="section-title">3. Final Constants (PHP 8.1+)</h2>
+        
+        <div class="code-block">
+<span class="keyword">class</span> <span class="class">Config</span> {
+    <span class="keyword">final</span> <span class="keyword">public</span> <span class="keyword">const</span> <span class="property">VERSION</span> = <span class="string">"1.0"</span>;
+    <span class="keyword">public</span> <span class="keyword">const</span> <span class="property">NAME</span> = <span class="string">"AppConfig"</span>;
+}
+
+<span class="keyword">class</span> <span class="class">CustomConfig</span> <span class="keyword">extends</span> <span class="class">Config</span> {
+    <span class="keyword">public</span> <span class="keyword">const</span> <span class="property">NAME</span> = <span class="string">"CustomApp"</span>; <span class="comment">// Allowed</span>
+    
+    <span class="error">// This would cause a fatal error:</span>
+    <span class="error">/*</span>
+    <span class="error">final public const VERSION = "2.0";</span>
+    <span class="error">*/</span>
+}
+        </div>
+        
+        <h2 class="section-title">When to Use final</h2>
+        
+        <ul>
+            <li><strong>Security:</strong> Prevent modification of critical classes/methods</li>
+            <li><strong>API Design:</strong> Lock down public interfaces</li>
+            <li><strong>Performance:</strong> Allows some optimizations (method inlining)</li>
+            <li><strong>Intent Signaling:</strong> Clearly marks what shouldn't be changed</li>
+        </ul>
+        
+        <div class="note">
+            <strong>Best Practice:</strong> Consider making classes final by default, and only removing final when extension is specifically needed.
+        </div>
+    </div>
+</body>
+</html>

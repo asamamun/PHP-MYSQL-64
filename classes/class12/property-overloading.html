@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Property Overloading</title>
+    <style>
+        .card {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .card-title {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            margin: 15px 0;
+        }
+        
+        .keyword {
+            color: #f92672;
+        }
+        
+        .property {
+            color: #a6e22e;
+        }
+        
+        .method {
+            color: #66d9ef;
+        }
+        
+        .comment {
+            color: #75715e;
+        }
+        
+        .note {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 3px solid #ffc107;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 class="card-title">Property Overloading in PHP</h1>
+        
+        <p>Property overloading allows you to dynamically create and access object properties that aren't explicitly declared in the class.</p>
+        
+        <div class="note">
+            <strong>Note:</strong> PHP provides magic methods <code>__get()</code>, <code>__set()</code>, <code>__isset()</code>, and <code>__unset()</code> to implement property overloading.
+        </div>
+        
+        <h3>Basic Example:</h3>
+        
+        <div class="code-block">
+            <span class="keyword">class</span> <span class="method">User</span> {<br>
+            &nbsp;&nbsp;<span class="keyword">private</span> <span class="property">$data</span> = [];<br><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__set</span>(<span class="property">$name</span>, <span class="property">$value</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">$this</span>-><span class="property">data</span>[<span class="property">$name</span>] = <span class="property">$value</span>;<br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__get</span>(<span class="property">$name</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="keyword">$this</span>-><span class="property">data</span>[<span class="property">$name</span>] ?? <span class="keyword">null</span>;<br>
+            &nbsp;&nbsp;}<br>
+            }<br><br>
+            <span class="comment">// Usage:</span><br>
+            <span class="property">$user</span> = <span class="keyword">new</span> <span class="method">User</span>();<br>
+            <span class="property">$user</span>-><span class="property">email</span> = <span class="property">'test@example.com'</span>; <span class="comment">// Calls __set()</span><br>
+            <span class="keyword">echo</span> <span class="property">$user</span>-><span class="property">email</span>; <span class="comment">// Calls __get()</span>
+        </div>
+        
+        <h3>Complete Implementation:</h3>
+        
+        <div class="code-block">
+            <span class="keyword">class</span> <span class="method">DynamicProperties</span> {<br>
+            &nbsp;&nbsp;<span class="keyword">private</span> <span class="property">$dynamicData</span> = [];<br><br>
+            &nbsp;&nbsp;<span class="comment">// Set undefined property</span><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__set</span>(<span class="property">$name</span>, <span class="property">$value</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">$this</span>-><span class="property">dynamicData</span>[<span class="property">$name</span>] = <span class="property">$value</span>;<br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span class="comment">// Get undefined property</span><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__get</span>(<span class="property">$name</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (<span class="keyword">array_key_exists</span>(<span class="property">$name</span>, <span class="keyword">$this</span>-><span class="property">dynamicData</span>)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="keyword">$this</span>-><span class="property">dynamicData</span>[<span class="property">$name</span>];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="keyword">null</span>;<br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span class="comment">// Check if property is set</span><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__isset</span>(<span class="property">$name</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-><span class="property">dynamicData</span>[<span class="property">$name</span>]);<br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span class="comment">// Unset property</span><br>
+            &nbsp;&nbsp;<span class="keyword">public</span> <span class="keyword">function</span> <span class="method">__unset</span>(<span class="property">$name</span>) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">unset</span>(<span class="keyword">$this</span>-><span class="property">dynamicData</span>[<span class="property">$name</span>]);<br>
+            &nbsp;&nbsp;}<br>
+            }
+        </div>
+        
+        <div class="note">
+            <strong>Remember:</strong> Property overloading only works on inaccessible properties (private or non-existent). Public properties are accessed directly without triggering these magic methods.
+        </div>
+    </div>
+</body>
+</html>

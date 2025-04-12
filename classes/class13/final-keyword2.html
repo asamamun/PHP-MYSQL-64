@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP final Keyword</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .note {
+            background: #fff8e1;
+            padding: 10px;
+            border-left: 3px solid #ffc107;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>PHP <code>final</code> Keyword</h1>
+
+<p>The <code>final</code> keyword prevents child classes from overriding methods or constants, and prevents class inheritance entirely.</p>
+
+<h2>1. Final Methods</h2>
+
+<pre>
+class ParentClass {
+    // This method cannot be overridden
+    <strong>final public function criticalOperation()</strong> {
+        return "This operation must not be changed";
+    }
+    
+    public function normalMethod() {
+        return "This can be overridden";
+    }
+}
+
+class ChildClass extends ParentClass {
+    public function normalMethod() {
+        return "Overridden version";
+    }
+    
+    // This would cause a fatal error:
+    /*
+    final public function criticalOperation() {
+        return "Trying to override";
+    }
+    */
+}
+</pre>
+
+<div class="note">
+    <strong>Note:</strong> Attempting to override a final method results in a fatal error:<br>
+    <em>"Cannot override final method ParentClass::criticalOperation()"</em>
+</div>
+
+<h2>2. Final Classes</h2>
+
+<pre>
+final class SecureDatabase {
+    public function connect() {
+        return "Secure connection established";
+    }
+}
+
+// This would cause a fatal error:
+/*
+class HackAttempt extends SecureDatabase {
+    public function connect() {
+        return "Hacked!";
+    }
+}
+*/
+
+// But can be used normally:
+$db = new SecureDatabase();
+echo $db->connect(); // Works fine
+</pre>
+<p>A final class is a class that <strong>cannot be extended</strong> by other classes. You declare it using the <code>final</code> keyword:</p>
+
+</body>
+</html>
