@@ -21,26 +21,26 @@ abstract class LeagueMember {
 // Implementation for Student League
 class ChatraLeague extends LeagueMember implements PartyWing {
     public function shoutSlogan(): string {
-        return "{$this->getTitle()} shouts: JOY BANGLA! (while burning buses)";
+        return "{$this->getTitle()} shouts: JOY BANGLA! (while burning buses) <br>";
     }
     
     public function acquireAssets(): string {
-        return "{$this->getTitle()} acquires: University contracts and student organization funds";
+        return "{$this->getTitle()} acquires: University contracts and student organization funds <br>";
     }
     
     public function getTitle(): string {
-        return "Chatra League {$this->position} {$this->name}";
+        return "Chatra League {$this->position} {$this->name} ";
     }
 }
 
 // Implementation for Workers League
 class SromikLeague extends LeagueMember implements PartyWing {
     public function shoutSlogan(): string {
-        return "{$this->getTitle()} shouts: JOY BANGLA! (while blocking factories)";
+        return "{$this->getTitle()} shouts: JOY BANGLA! (while blocking factories)<br>";
     }
     
     public function acquireAssets(): string {
-        return "{$this->getTitle()} acquires: Garment factory shares and labor union funds";
+        return "{$this->getTitle()} acquires: Garment factory shares and labor union funds<br>";
     }
     
     public function getTitle(): string {
@@ -51,11 +51,11 @@ class SromikLeague extends LeagueMember implements PartyWing {
 // Implementation for Doctors League
 class DoctorLeague extends LeagueMember implements PartyWing {
     public function shoutSlogan(): string {
-        return "{$this->getTitle()} shouts: JOY BANGLA! (while writing fake medical reports)";
+        return "{$this->getTitle()} shouts: JOY BANGLA! (while writing fake medical reports)<br>";
     }
     
     public function acquireAssets(): string {
-        return "{$this->getTitle()} acquires: Hospital equipment contracts and medicine import licenses";
+        return "{$this->getTitle()} acquires: Hospital equipment contracts and medicine import licenses<br>";
     }
     
     public function getTitle(): string {
@@ -66,11 +66,11 @@ class DoctorLeague extends LeagueMember implements PartyWing {
 // Implementation for Farmers League
 class FarmerLeague extends LeagueMember implements PartyWing {
     public function shoutSlogan(): string {
-        return "{$this->getTitle()} shouts: JOY BANGLA! (while occupying farmland)";
+        return "{$this->getTitle()} shouts: JOY BANGLA! (while occupying farmland)<br>";
     }
     
     public function acquireAssets(): string {
-        return "{$this->getTitle()} acquires: Agricultural subsidies and fertilizer distribution rights";
+        return "{$this->getTitle()} acquires: Agricultural subsidies and fertilizer distribution rights<br>";
     }
     
     public function getTitle(): string {
