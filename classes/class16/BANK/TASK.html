@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Classwork Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .task-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        .task-card h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .requirements {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        .test-case {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #2980b9;
+            font-style: italic;
+        }
+        .concept-badge {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OOP Classwork Tasks (PHP)</h1>
+
+    <!-- Enhanced Bank Account Task with Transaction History -->
+    <div class="task-card">
+        <h2>Task 4: Bank Account with Transaction History</h2>
+        <p>Implement a secure bank account class that tracks all transactions.</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Class Name:</strong> <code>BankAccount</code></li>
+                <li><strong>Private Properties:</strong>
+                    <ul>
+                        <li><code>accountNumber</code> (string)</li>
+                        <li><code>balance</code> (float)</li>
+                        <li><code>transactions</code> (array to store history)</li>
+                    </ul>
+                </li>
+                <li><strong>Methods:</strong>
+                    <ul>
+                        <li><code>deposit($amount, $description)</code>
+                            <ul>
+                                <li>Adds to balance</li>
+                                <li>Records transaction with: amount, type ("deposit"), description, timestamp</li>
+                            </ul>
+                        </li>
+                        <li><code>withdraw($amount, $description)</code>
+                            <ul>
+                                <li>Deducts from balance if funds suffice</li>
+                                <li>Records transaction with: amount, type ("withdrawal"), description, timestamp</li>
+                            </ul>
+                        </li>
+                        <li><code>getBalance()</code> - Returns current balance</li>
+                        <li><code>getTransactionHistory()</code> - Returns all transactions</li>
+                        <li><code>getLastTransaction()</code> - Returns most recent transaction</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <ol>
+                <li>Create account with initial balance $1000</li>
+                <li>Deposit $500 ("Paycheck")</li>
+                <li>Withdraw $200 ("Rent payment")</li>
+                <li>Print transaction history (should show 3 entries including initial balance)</li>
+                <li>Print last transaction (should show rent payment)</li>
+            </ol>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Encapsulation</span>
+            <span class="concept-badge">Private Properties</span>
+            <span class="concept-badge">Array Operations</span>
+            <span class="concept-badge">DateTime</span>
+        </div>
+    </div>
+
+    <!-- Transaction Structure Hint (can be hidden/collapsed) -->
+    <div class="task-card" style="background-color: #fffde7;">
+        <h3>💡 Transaction Structure Hint</h3>
+        <p>Each transaction could be stored as an associative array:</p>
+        <pre>
+[
+    'amount' => 100.00,
+    'type' => 'deposit',
+    'description' => 'Paycheck',
+    'timestamp' => '2023-11-15 14:30:00',
+    'new_balance' => 1100.00
+]</pre>
+    </div>
+</body>
+</html>

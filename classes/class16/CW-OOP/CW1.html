@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Classwork Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .task-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        .task-card h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .task-card h3 {
+            color: #16a085;
+        }
+        .requirements {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        .test-case {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #2980b9;
+            font-style: italic;
+        }
+        .concept-badge {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OOP Classwork Tasks (PHP)</h1>
+
+    <!-- Task 1 -->
+    <div class="task-card">
+        <h2>Task 1: TV Remote Control</h2>
+        <p>Implement a TV remote control class with basic functionality.</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Class Name:</strong> <code>TVRemote</code></li>
+                <li><strong>Properties:</strong>
+                    <ul>
+                        <li><code>brand</code> (string)</li>
+                        <li><code>batteryLevel</code> (int, range 0-100)</li>
+                        <li><code>isOn</code> (boolean)</li>
+                    </ul>
+                </li>
+                <li><strong>Methods:</strong>
+                    <ul>
+                        <li><code>turnOn()</code> - Sets TV state to on</li>
+                        <li><code>turnOff()</code> - Sets TV state to off</li>
+                        <li><code>changeBattery()</code> - Resets battery to 100%</li>
+                        <li><code>checkBattery()</code> - Returns current battery level</li>
+                        <li><code>pressButton($buttonName)</code> - Simulates button press</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <p>Create a remote, turn on TV, press some buttons, check battery, then turn off.</p>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Class</span>
+            <span class="concept-badge">Object</span>
+            <span class="concept-badge">Methods</span>
+        </div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task-card">
+        <h2>Task 2: Bike Class</h2>
+        <p>Create a class to represent a bicycle with gear and speed control.</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Class Name:</strong> <code>Bike</code></li>
+                <li><strong>Properties:</strong>
+                    <ul>
+                        <li><code>brand</code> (string)</li>
+                        <li><code>gear</code> (int, range 1-6)</li>
+                        <li><code>speed</code> (float, in km/h)</li>
+                    </ul>
+                </li>
+                <li><strong>Methods:</strong>
+                    <ul>
+                        <li><code>changeGear($newGear)</code> - Validates and changes gear</li>
+                        <li><code>accelerate($increase)</code> - Increases speed</li>
+                        <li><code>brake($decrease)</code> - Decreases speed (minimum 0)</li>
+                        <li><code>displayStatus()</code> - Shows current bike stats</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <p>Create a bike, accelerate, change gears, brake, and display status.</p>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Encapsulation</span>
+            <span class="concept-badge">Validation</span>
+        </div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task-card">
+        <h2>Task 3: Car with Engine</h2>
+        <p>Implement a car class that contains an engine object (composition).</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Classes:</strong>
+                    <ul>
+                        <li><code>Engine</code> (with <code>type</code> and <code>isRunning</code>)</li>
+                        <li><code>Car</code> (contains an <code>Engine</code> object)</li>
+                    </ul>
+                </li>
+                <li><strong>Engine Methods:</strong>
+                    <ul>
+                        <li><code>start()</code></li>
+                        <li><code>stop()</code></li>
+                    </ul>
+                </li>
+                <li><strong>Car Methods:</strong>
+                    <ul>
+                        <li><code>startCar()</code></li>
+                        <li><code>stopCar()</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <p>Create a car with a V6 engine, start it, then stop it.</p>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Composition</span>
+            <span class="concept-badge">Object Collaboration</span>
+        </div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task-card">
+        <h2>Task 4: Bank Account</h2>
+        <p>Create a secure bank account class with encapsulation.</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Class Name:</strong> <code>BankAccount</code></li>
+                <li><strong>Private Properties:</strong>
+                    <ul>
+                        <li><code>accountNumber</code></li>
+                        <li><code>balance</code></li>
+                    </ul>
+                </li>
+                <li><strong>Methods:</strong>
+                    <ul>
+                        <li><code>deposit($amount)</code> - Validates positive amounts</li>
+                        <li><code>withdraw($amount)</code> - Checks sufficient funds</li>
+                        <li><code>getBalance()</code></li>
+                        <li><code>displayAccountInfo()</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <p>Create account, deposit $100, withdraw $30, display info.</p>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Encapsulation</span>
+            <span class="concept-badge">Private Properties</span>
+        </div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task-card">
+        <h2>Task 5: Student Grading System</h2>
+        <p>Implement inheritance with Student and GraduateStudent classes.</p>
+        
+        <div class="requirements">
+            <h3>Requirements:</h3>
+            <ul>
+                <li><strong>Parent Class:</strong> <code>Student</code>
+                    <ul>
+                        <li>Properties: <code>name</code>, <code>studentId</code></li>
+                        <li>Method: <code>displayInfo()</code></li>
+                    </ul>
+                </li>
+                <li><strong>Child Class:</strong> <code>GraduateStudent</code>
+                    <ul>
+                        <li>Additional Property: <code>thesisTopic</code></li>
+                        <li>Override <code>displayInfo()</code> to include thesis</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-case">
+            <h3>Test Case:</h3>
+            <p>Create a graduate student and call their displayInfo() method.</p>
+        </div>
+        
+        <div>
+            <span class="concept-badge">Inheritance</span>
+            <span class="concept-badge">Method Overriding</span>
+        </div>
+    </div>
+</body>
+</html>
