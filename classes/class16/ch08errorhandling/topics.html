@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>unexpected occurrences are known as exceptions. Some 
+        programming languages have the capability to react gracefully to an exception 
+        rather than cause the application to grind to a halt, a behavior known as exception 
+        handling. When an error is detected, the code emits, or throws, an exception.</h3>
+    <pre>
+    types of error in PHP
+    error_reporting directive
+    PHP's Error-Reporting Levels
+    display_errors directive
+    log_errors directive
+    error_log directive
+    Exception Handling in PHP
+    Exception Class in PHP
+    try-catch-finally block
+</pre>
+    <hr>
+    <div class="card" style="max-width: 700px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: Arial, sans-serif; background-color: #f9f9f9;">
+        <h2 style="color: #2c3e50;">PHP Error Handling Overview</h2>
+      
+        <h3 style="color: #2980b9;">Types of Error in PHP</h3>
+        <ul>
+          <li><strong>Parse Errors:</strong> Syntax errors.</li>
+          <li><strong>Fatal Errors:</strong> Occur when PHP can't run the script.</li>
+          <li><strong>Warning:</strong> Script continues, but something’s wrong.</li>
+          <li><strong>Notice:</strong> Minor issues, like undefined variables.</li>
+          <li><strong>Deprecated:</strong> Features that will be removed in future versions.</li>
+        </ul>
+      
+        <h3 style="color: #2980b9;">error_reporting Directive</h3>
+        <p>Controls which types of errors are reported. Example:</p>
+        <code>error_reporting(E_ALL);</code>
+      
+        <h3 style="color: #2980b9;">PHP's Error-Reporting Levels</h3>
+        <ul>
+          <li><code>E_ERROR</code> - Fatal run-time errors</li>
+          <li><code>E_WARNING</code> - Run-time warnings (non-fatal)</li>
+          <li><code>E_PARSE</code> - Compile-time parse errors</li>
+          <li><code>E_NOTICE</code> - Run-time notices</li>
+          <li><code>E_ALL</code> - All errors and warnings</li>
+        </ul>
+      
+        <h3 style="color: #2980b9;">display_errors Directive</h3>
+        <p>Determines if errors should be displayed in the browser.</p>
+        <code>display_errors = On</code>
+      
+        <h3 style="color: #2980b9;">log_errors Directive</h3>
+        <p>Determines whether script errors should be logged.</p>
+        <code>log_errors = On</code>
+      
+        <h3 style="color: #2980b9;">error_log Directive</h3>
+        <p>Specifies the file where script errors should be logged.</p>
+        <code>error_log = /path/to/php-error.log</code>
+      
+        <h3 style="color: #2980b9;">Exception Handling in PHP</h3>
+        <p>PHP allows you to handle exceptions using <code>try</code>, <code>catch</code>, and <code>finally</code> blocks.</p>
+      
+        <h3 style="color: #2980b9;">Exception Class in PHP</h3>
+        <p>All exceptions must be derived from the <code>Exception</code> class. You can extend it to create custom exceptions.</p>
+      
+        <h3 style="color: #2980b9;">try-catch-finally Block</h3>
+        <pre style="background: #eee; padding: 10px; border-radius: 5px;">
+      try {
+          // Code that may throw an exception
+      } catch (Exception $e) {
+          // Handle exception
+      } finally {
+          // Code that always runs
+      }
+        </pre>
+      </div>
+      
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+[20-Apr-2025 09:57:59 Asia/Dhaka] PHP Warning:  require(nofile.php): Failed to open stream: No such file or directory in D:\xampp8240\htdocs\ROUND64\PHP\PHP-MYSQL-64\classes\class17\checking-error-log.php on line 2
+[20-Apr-2025 09:57:59 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Failed opening required 'nofile.php' (include_path='D:\xampp8240\php\PEAR') in D:\xampp8240\htdocs\ROUND64\PHP\PHP-MYSQL-64\classes\class17\checking-error-log.php:2
+Stack trace:
+#0 {main}
+  thrown in D:\xampp8240\htdocs\ROUND64\PHP\PHP-MYSQL-64\classes\class17\checking-error-log.php on line 2

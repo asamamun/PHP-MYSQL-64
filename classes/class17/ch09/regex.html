@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Regular Expression Topics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white rounded-2xl shadow-xl p-6 max-w-2xl w-full space-y-6">
+    <h2 class="text-3xl font-bold text-gray-800">Regular Expression Topics</h2>
+
+    <!-- Topic 1 -->
+    <div>
+      <h3 class="text-xl font-semibold text-blue-600">1. Regular Expression</h3>
+      <p class="text-gray-700 mt-1">A regular expression (regex) is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings.</p>
+      <div class="bg-gray-100 p-3 mt-2 rounded text-sm font-mono text-gray-800">
+        Example: <br>
+        Pattern: <code>/cat/</code><br>
+        Matches: "The cat sat on the mat."
+      </div>
+    </div>
+
+    <!-- Topic 2 -->
+    <div>
+      <h3 class="text-xl font-semibold text-blue-600">2. Regular Expression Syntax (Perl)</h3>
+      <p class="text-gray-700 mt-1">Perl-style regular expressions are common in many programming languages. They support grouping, quantifiers, character classes, etc.</p>
+      <div class="bg-gray-100 p-3 mt-2 rounded text-sm font-mono text-gray-800">
+        Example: <br>
+        Pattern: <code>/\d{3}-\d{2}-\d{4}/</code><br>
+        Matches: "123-45-6789"
+      </div>
+    </div>
+
+    <!-- Topic 3 -->
+    <div>
+      <h3 class="text-xl font-semibold text-blue-600">3. Regular Expression Modifiers</h3>
+      <p class="text-gray-700 mt-1">Modifiers change the way regex behaves, like making it case-insensitive or global.</p>
+      <div class="bg-gray-100 p-3 mt-2 rounded text-sm font-mono text-gray-800">
+        Example: <br>
+        Pattern: <code>/hello/i</code><br>
+        Matches: "Hello", "HELLO", "heLLo"
+      </div>
+    </div>
+
+    <!-- Topic 4 -->
+    <div>
+      <h3 class="text-xl font-semibold text-blue-600">4. Regular Expression Metacharacters</h3>
+      <p class="text-gray-700 mt-1">Metacharacters are characters with special meaning in regex like <code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>.</p>
+      <div class="bg-gray-100 p-3 mt-2 rounded text-sm font-mono text-gray-800">
+        Example: <br>
+        Pattern: <code>/a.c/</code><br>
+        Matches: "abc", "a7c", "a_c"
+      </div>
+    </div>
+  </div>
+</body>
+</html>
