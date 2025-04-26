@@ -1,0 +1,10 @@
+INVOICE #: INV_6809DB699EDB3
+Date: 2025-04-24 12:34:17
+Customer Name: muntasir
+Mobile: 01794920177
+Address: shyamoli
+-----------------------------------
+1. iphone | Price: $50 | Qty: 4 | Total: $200
+2. iphone | Price: $50 | Qty: 4 | Total: $200
+-----------------------------------
+Grand Total: $400.00

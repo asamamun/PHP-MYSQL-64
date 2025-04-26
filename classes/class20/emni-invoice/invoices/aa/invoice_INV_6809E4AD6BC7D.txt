@@ -1,0 +1,9 @@
+INVOICE #: INV_6809E4AD6BC7D
+Date: 2025-04-24 13:13:49
+Customer Name: AA
+Mobile: 2134234
+Address: 4356546
+-----------------------------------
+1. aa | Price: $44 | Qty: 3 | Total: $132
+-----------------------------------
+Grand Total: $132.00

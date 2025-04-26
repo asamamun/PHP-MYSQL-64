@@ -1,0 +1,11 @@
+INVOICE #: INV_6809DEA5D168C
+Date: 2025-04-24 12:48:05
+Customer Name: emon
+Mobile: 01717450830
+Address: mirpur
+-----------------------------------
+1. realme | Price: $50 | Qty: 5 | Total: $250
+2. iphone | Price: $500 | Qty: 5 | Total: $2500
+3. iphone | Price: $1000 | Qty: 1 | Total: $1000
+-----------------------------------
+Grand Total: $3750.00

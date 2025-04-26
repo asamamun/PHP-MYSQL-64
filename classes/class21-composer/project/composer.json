@@ -1,0 +1,20 @@
+{
+    "name": "wdpf/project",
+    "description": "testing compsoer",
+    "type": "project",
+    "require": {
+        "nesbot/carbon": "^3.9",
+        "intervention/image": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "asamamun",
+            "email": "asamamun@gmail.com"
+        }
+    ]
+}

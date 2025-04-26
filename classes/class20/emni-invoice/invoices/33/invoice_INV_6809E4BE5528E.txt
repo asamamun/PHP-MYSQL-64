@@ -1,0 +1,10 @@
+INVOICE #: INV_6809E4BE5528E
+Date: 2025-04-24 13:14:06
+Customer Name: 33
+Mobile: 4565465
+Address: rtrt
+-----------------------------------
+1. aa | Price: $44 | Qty: 3 | Total: $132
+2. dfgf | Price: $33 | Qty: 4 | Total: $132
+-----------------------------------
+Grand Total: $264.00

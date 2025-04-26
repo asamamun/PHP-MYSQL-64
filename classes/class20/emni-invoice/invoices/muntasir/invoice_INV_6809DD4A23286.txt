@@ -1,0 +1,9 @@
+INVOICE #: INV_6809DD4A23286
+Date: 2025-04-24 12:42:18
+Customer Name: muntasir
+Mobile: 01794920177
+Address: shyamoli
+-----------------------------------
+1. realme | Price: $50 | Qty: 5 | Total: $250
+-----------------------------------
+Grand Total: $250.00

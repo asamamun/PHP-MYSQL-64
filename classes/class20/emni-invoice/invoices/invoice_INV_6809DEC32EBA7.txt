@@ -1,0 +1,9 @@
+INVOICE #: INV_6809DEC32EBA7
+Date: 2025-04-24 12:48:35
+Customer Name: 
+Mobile: 
+Address: 
+-----------------------------------
+1. iphone | Price: $1000 | Qty: 1 | Total: $1000
+-----------------------------------
+Grand Total: $1000.00
