@@ -1,0 +1,7 @@
+genuity, gen@gmail.com, 8cb2237d0679ca88db6464eac60da96345513964, 34564656
+Muntasir Mahmud, muntasirmahmudcn42@gmail.com, 8cb2237d0679ca88db6464eac60da96345513964, 0179
+Ishaq, ishaqhossain98@gmail.com, 8cb2237d0679ca88db6464eac60da96345513964, 01783629582
+thanos, thanos@marvel.com, 7c4a8d09ca3762af61e59520943dc26494f8941b, 147258
+user1, user1@gmail.com, 7c4a8d09ca3762af61e59520943dc26494f8941b, 456987598657
+admin2, admin2@gmail.com, d4e8e6deaa7b1f8381e09e3e6b83e36f0b681c5c, 45698759867
+ABC, ABC@gmail.com, 20eabe5d64b0e216796e834f52d61fd0b70332fc, 017540000
