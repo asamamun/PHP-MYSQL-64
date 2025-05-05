@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MySQL Syntax Reference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .syntax {
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .example {
+            background-color: #e8f4fc;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #2980b9;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #fff8e1;
+            padding: 10px;
+            border-left: 3px solid #ffc107;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .keyword {
+            color: #d03;
+            font-weight: bold;
+        }
+        .param {
+            color: #069;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>MySQL SQL Syntax Reference</h1>
+    <h3>DDL: Data Definition Language: CREATE, ALTER, DROP</h3>
+    <h3>DML: Data Manipulation Language: INSERT, UPDATE, DELETE</h3>
+
+    <h2>SELECT Statement</h2>
+    <div class="card">
+        <div class="syntax">
+<span class="keyword">SELECT</span> [<span class="keyword">DISTINCT</span>] <span class="param">column_list</span>
+<span class="keyword">FROM</span> <span class="param">table_name</span>
+[<span class="keyword">WHERE</span> <span class="param">condition</span>]
+[<span class="keyword">GROUP BY</span> <span class="param">grouping_columns</span>]
+[<span class="keyword">HAVING</span> <span class="param">group_condition</span>]
+[<span class="keyword">ORDER BY</span> <span class="param">sorting_columns</span> [<span class="keyword">ASC</span>|<span class="keyword">DESC</span>]]
+[<span class="keyword">LIMIT</span> <span class="param">offset</span>, <span class="param">row_count</span>];
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Basic SELECT
+SELECT * FROM customers;
+
+-- SELECT with conditions
+SELECT first_name, last_name FROM employees WHERE salary > 50000;
+
+-- JOIN example
+SELECT o.order_id, c.customer_name 
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id;
+
+-- GROUP BY with aggregate
+SELECT department_id, COUNT(*) as emp_count, AVG(salary) as avg_salary
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5
+ORDER BY avg_salary DESC;</pre>
+        </div>
+    </div>
+
+    <h2>INSERT Statement</h2>
+    <div class="card">
+        <div class="syntax">
+-- Single row insert
+<span class="keyword">INSERT INTO</span> <span class="param">table_name</span> (<span class="param">column_list</span>)
+<span class="keyword">VALUES</span> (<span class="param">value_list</span>);
+
+-- Multiple rows insert
+<span class="keyword">INSERT INTO</span> <span class="param">table_name</span> (<span class="param">column_list</span>)
+<span class="keyword">VALUES</span> 
+    (<span class="param">value_list1</span>),
+    (<span class="param">value_list2</span>),
+    ...;
+
+-- Insert from SELECT
+<span class="keyword">INSERT INTO</span> <span class="param">table_name</span> (<span class="param">column_list</span>)
+<span class="keyword">SELECT</span> <span class="param">column_list</span> 
+<span class="keyword">FROM</span> <span class="param">source_table</span>
+[<span class="keyword">WHERE</span> <span class="param">condition</span>];
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Insert single row
+INSERT INTO customers (name, email, phone)
+VALUES ('John Doe', 'john@example.com', '555-1234');
+
+-- Insert multiple rows
+INSERT INTO products (name, price, category)
+VALUES 
+    ('Laptop', 999.99, 'Electronics'),
+    ('Desk Chair', 149.99, 'Furniture'),
+    ('Monitor', 199.99, 'Electronics');
+
+-- Insert from another table
+INSERT INTO customer_archive (customer_id, name, email)
+SELECT customer_id, name, email 
+FROM customers 
+WHERE last_purchase_date < '2020-01-01';</pre>
+        </div>
+    </div>
+
+    <h2>UPDATE Statement</h2>
+    <div class="card">
+        <div class="syntax">
+<span class="keyword">UPDATE</span> <span class="param">table_name</span>
+<span class="keyword">SET</span> 
+    <span class="param">column1</span> = <span class="param">value1</span>,
+    <span class="param">column2</span> = <span class="param">value2</span>,
+    ...
+[<span class="keyword">WHERE</span> <span class="param">condition</span>]
+[<span class="keyword">ORDER BY</span> <span class="param">column</span> [<span class="keyword">ASC</span>|<span class="keyword">DESC</span>]]
+[<span class="keyword">LIMIT</span> <span class="param">row_count</span>];
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Update single column
+UPDATE employees
+SET salary = salary * 1.05
+WHERE department = 'Engineering';
+
+-- Update multiple columns
+UPDATE products
+SET price = price * 0.9,
+    last_updated = NOW()
+WHERE discontinued = 1;
+
+-- Update with JOIN
+UPDATE orders o
+JOIN customers c ON o.customer_id = c.customer_id
+SET o.status = 'VIP'
+WHERE c.total_orders > 1000;
+
+-- Limited update
+UPDATE user_sessions
+SET last_activity = NOW()
+WHERE user_id = 42
+ORDER BY last_activity DESC
+LIMIT 1;</pre>
+        </div>
+        
+        <div class="note">
+            <strong>Important:</strong> Always include a WHERE clause in your UPDATE statements unless you intend to update every row in the table.
+        </div>
+    </div>
+
+    <h2>DELETE Statement</h2>
+    <div class="card">
+        <div class="syntax">
+<span class="keyword">DELETE FROM</span> <span class="param">table_name</span>
+[<span class="keyword">WHERE</span> <span class="param">condition</span>]
+[<span class="keyword">ORDER BY</span> <span class="param">column</span> [<span class="keyword">ASC</span>|<span class="keyword">DESC</span>]]
+[<span class="keyword">LIMIT</span> <span class="param">row_count</span>];
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Delete specific rows
+DELETE FROM temp_logs
+WHERE created_at < '2023-01-01';
+
+-- Delete with JOIN
+DELETE o FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.status = 'INACTIVE';
+
+-- Limited delete
+DELETE FROM session_tokens
+WHERE expires_at < NOW()
+ORDER BY expires_at
+LIMIT 1000;</pre>
+        </div>
+        
+        <div class="note">
+            <strong>Important:</strong> Always include a WHERE clause in your DELETE statements unless you intend to delete all rows from the table.
+        </div>
+    </div>
+
+    <h2>CREATE Statement</h2>
+    <div class="card">
+        <div class="syntax">
+-- Create database
+<span class="keyword">CREATE DATABASE</span> [<span class="keyword">IF NOT EXISTS</span>] <span class="param">database_name</span>
+[<span class="keyword">CHARACTER SET</span> <span class="param">charset_name</span>]
+[<span class="keyword">COLLATE</span> <span class="param">collation_name</span>];
+
+-- Create table
+<span class="keyword">CREATE TABLE</span> [<span class="keyword">IF NOT EXISTS</span>] <span class="param">table_name</span> (
+    <span class="param">column1</span> <span class="param">datatype</span> [<span class="param">constraints</span>],
+    <span class="param">column2</span> <span class="param">datatype</span> [<span class="param">constraints</span>],
+    ...
+    [<span class="keyword">PRIMARY KEY</span> (<span class="param">column_name</span>)],
+    [<span class="keyword">FOREIGN KEY</span> (<span class="param">column</span>) <span class="keyword">REFERENCES</span> <span class="param">table</span>(<span class="param">column</span>)],
+    [<span class="keyword">INDEX</span> (<span class="param">column</span>)]
+) [<span class="keyword">ENGINE</span>=<span class="param">storage_engine</span>];
+
+-- Create index
+<span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>|<span class="keyword">FULLTEXT</span>|<span class="keyword">SPATIAL</span>] <span class="keyword">INDEX</span> <span class="param">index_name</span>
+<span class="keyword">ON</span> <span class="param">table_name</span> (<span class="param">column_list</span>);
+
+-- Create view
+<span class="keyword">CREATE</span> [<span class="keyword">OR REPLACE</span>] <span class="keyword">VIEW</span> <span class="param">view_name</span> <span class="keyword">AS</span>
+<span class="keyword">SELECT</span> <span class="param">column_list</span>
+<span class="keyword">FROM</span> <span class="param">table_name</span>
+[<span class="keyword">WHERE</span> <span class="param">condition</span>];
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Create database
+CREATE DATABASE IF NOT EXISTS ecommerce
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+-- Create table
+CREATE TABLE employees (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    hire_date DATE NOT NULL,
+    salary DECIMAL(10,2),
+    dept_id INT,
+    INDEX idx_dept (dept_id),
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+ENGINE=InnoDB;
+
+-- Create index
+CREATE INDEX idx_customer_name ON customers(last_name, first_name);
+
+-- Create view
+CREATE OR REPLACE VIEW active_customers AS
+SELECT customer_id, first_name, last_name, email
+FROM customers
+WHERE status = 'ACTIVE'
+AND last_purchase_date > DATE_SUB(NOW(), INTERVAL 6 MONTH);</pre>
+        </div>
+    </div>
+
+    <h2>DROP Statement</h2>
+    <div class="card">
+        <div class="syntax">
+-- Drop database
+<span class="keyword">DROP DATABASE</span> [<span class="keyword">IF EXISTS</span>] <span class="param">database_name</span>;
+
+-- Drop table
+<span class="keyword">DROP TABLE</span> [<span class="keyword">IF EXISTS</span>] <span class="param">table_name</span> [<span class="keyword">RESTRICT</span>|<span class="keyword">CASCADE</span>];
+
+-- Drop index
+<span class="keyword">DROP INDEX</span> <span class="param">index_name</span> <span class="keyword">ON</span> <span class="param">table_name</span>;
+
+-- Drop view
+<span class="keyword">DROP VIEW</span> [<span class="keyword">IF EXISTS</span>] <span class="param">view_name</span>;
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Drop database
+DROP DATABASE IF EXISTS old_database;
+
+-- Drop table
+DROP TABLE IF EXISTS temp_data;
+
+-- Drop index
+DROP INDEX idx_product_name ON products;
+
+-- Drop view
+DROP VIEW IF EXISTS outdated_report;</pre>
+        </div>
+        
+        <div class="note">
+            <strong>Warning:</strong> DROP statements permanently remove database objects. Always double-check before executing.
+        </div>
+    </div>
+
+    <h2>ALTER Statement</h2>
+    <div class="card">
+        <div class="syntax">
+-- Modify table structure
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">ADD</span> [<span class="keyword">COLUMN</span>] <span class="param">column_name</span> <span class="param">datatype</span> [<span class="param">constraints</span>]
+    [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> <span class="param">existing_column</span>];
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">MODIFY</span> [<span class="keyword">COLUMN</span>] <span class="param">column_name</span> <span class="param">new_datatype</span> [<span class="param">constraints</span>];
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">CHANGE</span> [<span class="keyword">COLUMN</span>] <span class="param">old_name</span> <span class="param">new_name</span> <span class="param">datatype</span> [<span class="param">constraints</span>];
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">DROP</span> [<span class="keyword">COLUMN</span>] <span class="param">column_name</span>;
+
+-- Modify constraints
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">ADD</span> [<span class="keyword">CONSTRAINT</span> [<span class="param">constraint_name</span>]] 
+    <span class="keyword">PRIMARY KEY</span> (<span class="param">column_list</span>);
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">ADD</span> [<span class="keyword">CONSTRAINT</span> [<span class="param">constraint_name</span>]] 
+    <span class="keyword">FOREIGN KEY</span> (<span class="param">column</span>) 
+    <span class="keyword">REFERENCES</span> <span class="param">table</span>(<span class="param">column</span>);
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">DROP</span> <span class="keyword">PRIMARY KEY</span>;
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">DROP</span> <span class="keyword">FOREIGN KEY</span> <span class="param">constraint_name</span>;
+
+-- Table options
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">ENGINE</span> = <span class="param">engine_name</span>;
+
+<span class="keyword">ALTER TABLE</span> <span class="param">table_name</span>
+<span class="keyword">RENAME TO</span> <span class="param">new_table_name</span>;
+        </div>
+        
+        <div class="example">
+            <strong>Examples:</strong>
+            <pre>-- Add column
+ALTER TABLE employees
+ADD COLUMN middle_name VARCHAR(50) AFTER first_name;
+
+-- Modify column
+ALTER TABLE products
+MODIFY COLUMN price DECIMAL(12,2) NOT NULL;
+
+-- Rename column
+ALTER TABLE customers
+CHANGE COLUMN phone phone_number VARCHAR(20);
+
+-- Drop column
+ALTER TABLE orders
+DROP COLUMN old_promo_code;
+
+-- Add constraint
+ALTER TABLE order_items
+ADD CONSTRAINT fk_order
+FOREIGN KEY (order_id) REFERENCES orders(order_id);
+
+-- Change storage engine
+ALTER TABLE logs
+ENGINE = MyISAM;
+
+-- Rename table
+ALTER TABLE employee_data
+RENAME TO staff_records;</pre>
+        </div>
+    </div>
+</body>
+</html>

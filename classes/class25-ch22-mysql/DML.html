@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MySQL DDL and DML - CRUD Syntax</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f2f2;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 360px;
+      padding: 20px;
+    }
+    .card h2 {
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin-bottom: 10px;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .card li {
+      margin-bottom: 8px;
+    }
+    code {
+      background: #f1f1f1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    pre {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DDL Card -->
+  <div class="card">
+    <h2>DDL (Data Definition Language)</h2>
+    <p>Defines or modifies database structure.</p>
+    <ul>
+      <li><code>CREATE</code> – Create tables/databases</li>
+      <li><code>ALTER</code> – Change table structure</li>
+      <li><code>DROP</code> – Delete tables/databases</li>
+      <li><code>TRUNCATE</code> – Clear all data in a table</li>
+    </ul>
+    <pre><strong>CREATE TABLE</strong> users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+<strong>ALTER TABLE</strong> users ADD email VARCHAR(100);
+
+<strong>DROP TABLE</strong> users;
+
+<strong>TRUNCATE TABLE</strong> users;
+</pre>
+  </div>
+
+  <!-- DML / CRUD Card -->
+  <div class="card">
+    <h2>DML (Data Manipulation) – CRUD</h2>
+    <p>Manages the data inside tables.</p>
+    <ul>
+      <li><strong>Create</strong>: <code>INSERT</code></li>
+      <li><strong>Read</strong>: <code>SELECT</code></li>
+      <li><strong>Update</strong>: <code>UPDATE</code></li>
+      <li><strong>Delete</strong>: <code>DELETE</code></li>
+    </ul>
+    <pre><strong>INSERT INTO</strong> users (id, name)
+VALUES (1, 'Alice');
+
+<strong>SELECT</strong> * FROM users;
+
+<strong>UPDATE</strong> users
+SET name = 'Bob'
+WHERE id = 1;
+
+<strong>DELETE FROM</strong> users
+WHERE id = 1;
+</pre>
+  </div>
+
+</body>
+</html>

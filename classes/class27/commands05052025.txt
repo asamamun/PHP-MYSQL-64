@@ -1,0 +1,326 @@
+MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| boikhujo             |
+| company              |
+| doc_appointment      |
+| dream_social         |
+| eventmgt             |
+| example_app1         |
+| export_import        |
+| hospital_ms          |
+| hotel_management     |
+| housing_society      |
+| information_schema   |
+| job_portal           |
+| jpp                  |
+| l10starter           |
+| lara10               |
+| lioncommerce         |
+| mysql                |
+| mytestdatabase       |
+| performance_schema   |
+| php_pos              |
+| phpmyadmin           |
+| poly2024             |
+| polyecomm            |
+| quiz_app             |
+| r41_php              |
+| r49_jquery           |
+| r53_react_quizapp    |
+| r55_laravel          |
+| r57_ci4todo          |
+| r57_ec               |
+| r57_ec2              |
+| r57_evidence         |
+| r57_jquery           |
+| r57_jquery_project   |
+| r57_lara_vue_todo    |
+| r57_laravel          |
+| r57_php              |
+| r57_sample_ecommerce |
+| r57_vue              |
+| r57_vue3laravel      |
+| r57_wp_ms            |
+| r57_wp_myblog        |
+| r57_wp_woo           |
+| r64_php              |
+| sakila               |
+| school_management    |
+| schoolms             |
+| sharkpos             |
+| shopadmin            |
+| stuman               |
+| test                 |
+| tiger_quiz           |
+| tigercommerce        |
+| tigerpos             |
+| tigerpos49           |
+| transaction          |
+| transactions         |
+| travel_agency        |
+| web1ecomm            |
+| web2ecomm            |
+| world                |
++----------------------+
+61 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database hihihi;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> use hihihi;
+Database changed
+MariaDB [hihihi]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [hihihi]> create table test(id int(5) primary key auto_increment,name varchar(20) default 'anon');
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [hihihi]> show tables;
++------------------+
+| Tables_in_hihihi |
++------------------+
+| test             |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [hihihi]> insert into test values(null,"A");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [hihihi]> select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | A    |
++----+------+
+1 row in set (0.000 sec)
+
+MariaDB [hihihi]> insert into test values(null,"B");
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [hihihi]> insert into test values(null,"C");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [hihihi]> insert into test values(null,"D");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [hihihi]> select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | A    |
+|  2 | B    |
+|  3 | C    |
+|  4 | D    |
++----+------+
+4 rows in set (0.000 sec)
+
+MariaDB [hihihi]> update test set name="E";
+Query OK, 4 rows affected (0.002 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+MariaDB [hihihi]> select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | E    |
+|  2 | E    |
+|  3 | E    |
+|  4 | E    |
++----+------+
+4 rows in set (0.000 sec)
+
+MariaDB [hihihi]> show tables;
++------------------+
+| Tables_in_hihihi |
++------------------+
+| test             |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [hihihi]> delete from test where id>2;
+Query OK, 2 rows affected (0.003 sec)
+
+MariaDB [hihihi]> select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | E    |
+|  2 | E    |
++----+------+
+2 rows in set (0.000 sec)
+
+MariaDB [hihihi]> delete from test limit 1;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [hihihi]> select * from test;
++----+------+
+| id | name |
++----+------+
+|  2 | E    |
++----+------+
+1 row in set (0.000 sec)
+
+MariaDB [hihihi]> truncate test;
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [hihihi]> select * from test;
+Empty set (0.000 sec)
+
+MariaDB [hihihi]> describe test;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(5)      | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | anon    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.011 sec)
+
+MariaDB [hihihi]> drop table test;
+Query OK, 0 rows affected (0.199 sec)
+
+MariaDB [hihihi]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [hihihi]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| boikhujo             |
+| company              |
+| doc_appointment      |
+| dream_social         |
+| eventmgt             |
+| example_app1         |
+| export_import        |
+| hihihi               |
+| hospital_ms          |
+| hotel_management     |
+| housing_society      |
+| information_schema   |
+| job_portal           |
+| jpp                  |
+| l10starter           |
+| lara10               |
+| lioncommerce         |
+| mysql                |
+| mytestdatabase       |
+| performance_schema   |
+| php_pos              |
+| phpmyadmin           |
+| poly2024             |
+| polyecomm            |
+| quiz_app             |
+| r41_php              |
+| r49_jquery           |
+| r53_react_quizapp    |
+| r55_laravel          |
+| r57_ci4todo          |
+| r57_ec               |
+| r57_ec2              |
+| r57_evidence         |
+| r57_jquery           |
+| r57_jquery_project   |
+| r57_lara_vue_todo    |
+| r57_laravel          |
+| r57_php              |
+| r57_sample_ecommerce |
+| r57_vue              |
+| r57_vue3laravel      |
+| r57_wp_ms            |
+| r57_wp_myblog        |
+| r57_wp_woo           |
+| r64_php              |
+| sakila               |
+| school_management    |
+| schoolms             |
+| sharkpos             |
+| shopadmin            |
+| stuman               |
+| test                 |
+| tiger_quiz           |
+| tigercommerce        |
+| tigerpos             |
+| tigerpos49           |
+| transaction          |
+| transactions         |
+| travel_agency        |
+| web1ecomm            |
+| web2ecomm            |
+| world                |
++----------------------+
+62 rows in set (0.001 sec)
+
+MariaDB [hihihi]> drop database hihihi;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++----------------------+
+| Database             |
++----------------------+
+| boikhujo             |
+| company              |
+| doc_appointment      |
+| dream_social         |
+| eventmgt             |
+| example_app1         |
+| export_import        |
+| hospital_ms          |
+| hotel_management     |
+| housing_society      |
+| information_schema   |
+| job_portal           |
+| jpp                  |
+| l10starter           |
+| lara10               |
+| lioncommerce         |
+| mysql                |
+| mytestdatabase       |
+| performance_schema   |
+| php_pos              |
+| phpmyadmin           |
+| poly2024             |
+| polyecomm            |
+| quiz_app             |
+| r41_php              |
+| r49_jquery           |
+| r53_react_quizapp    |
+| r55_laravel          |
+| r57_ci4todo          |
+| r57_ec               |
+| r57_ec2              |
+| r57_evidence         |
+| r57_jquery           |
+| r57_jquery_project   |
+| r57_lara_vue_todo    |
+| r57_laravel          |
+| r57_php              |
+| r57_sample_ecommerce |
+| r57_vue              |
+| r57_vue3laravel      |
+| r57_wp_ms            |
+| r57_wp_myblog        |
+| r57_wp_woo           |
+| r64_php              |
+| sakila               |
+| school_management    |
+| schoolms             |
+| sharkpos             |
+| shopadmin            |
+| stuman               |
+| test                 |
+| tiger_quiz           |
+| tigercommerce        |
+| tigerpos             |
+| tigerpos49           |
+| transaction          |
+| transactions         |
+| travel_agency        |
+| web1ecomm            |
+| web2ecomm            |
+| world                |
++----------------------+
+61 rows in set (0.001 sec)
+
+MariaDB [(none)]> notee;

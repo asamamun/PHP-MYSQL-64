@@ -1,0 +1,128 @@
+SELECT * FROM `actor` WHERE `actor_id`>100;
+SELECT * FROM `actor` limit 5;
+SELECT * FROM `actor` limit 0,5;
+SELECT * FROM `actor` limit 5,5;
+SELECT * FROM `actor` limit 10,10;
+SELECT * FROM `actor` limit 0,10;
+SELECT * FROM `actor` limit 10,10;
+SELECT * FROM `actor` limit 20,10;
+
+insert into country(`country`) values('Noakhali');
+insert into country(`country`) 
+values('New Noakhali'), 
+('Arakan'), 
+('Parbotto Chattogram');
+
+insert into country values(null,'ABCD',null);
+insert into country values('','EFG',null);
+
+INSERT INTO actor (first_name, last_name) VALUES ('JANE', 'SMITH');
+INSERT INTO actor VALUES (null,'Elias', 'Kanchon',null);
+
+update actor set first_name="zero" //disaster code
+update actor set first_name="zero" limit 1 //disaster code
+update actor set first_name="ZERO" where actor_id=201
+update actor set first_name="ZERO" where actor_id=201 limit 1;//better code
+
+delete from actor;//disaster code
+
+delete from actor where actor_id=201;
+delete from actor where first_name='ZERO';
+
+create database r64_php;
+drop database r64_php;
+
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL unique,
+    icon VARCHAR(50) NOT NULL,
+    created datetime default CURRENT_TIMESTAMP)    
+ENGINE=InnoDB;
+
+
+
+Setting environment for using XAMPP for Windows.
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+
+MariaDB [(none)]> use r64_php;
+Database changed
+MariaDB [r64_php]> show tables;
++-------------------+
+| Tables_in_r64_php |
++-------------------+
+| categories        |
+| users             |
++-------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [r64_php]> describe categories;
++---------+-------------+------+-----+---------------------+----------------+
+| Field   | Type        | Null | Key | Default             | Extra          |
++---------+-------------+------+-----+---------------------+----------------+
+| id      | int(11)     | NO   | PRI | NULL                | auto_increment |
+| name    | varchar(50) | NO   |     | NULL                |                |
+| icon    | varchar(50) | NO   |     | NULL                |                |
+| created | datetime    | YES  |     | current_timestamp() |                |
++---------+-------------+------+-----+---------------------+----------------+
+4 rows in set (0.011 sec)
+
+MariaDB [r64_php]> select * from categories;
+Empty set (0.000 sec)
+
+MariaDB [r64_php]> insert into categories values(null,'Electronics','mobile',null);
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [r64_php]> select * from categories;
++----+-------------+--------+---------+
+| id | name        | icon   | created |
++----+-------------+--------+---------+
+|  1 | Electronics | mobile | NULL    |
++----+-------------+--------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [r64_php]> insert into categories values(null,'Automobiles','mobile',now());
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [r64_php]> select * from categories;
++----+-------------+--------+---------------------+
+| id | name        | icon   | created             |
++----+-------------+--------+---------------------+
+|  1 | Electronics | mobile | NULL                |
+|  2 | Automobiles | mobile | 2025-05-05 11:26:42 |
++----+-------------+--------+---------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [r64_php]> update categories set created=now() where id=1;
+Query OK, 1 row affected (0.002 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [r64_php]> select * from categories;
++----+-------------+--------+---------------------+
+| id | name        | icon   | created             |
++----+-------------+--------+---------------------+
+|  1 | Electronics | mobile | 2025-05-05 11:27:35 |
+|  2 | Automobiles | mobile | 2025-05-05 11:26:42 |
++----+-------------+--------+---------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [r64_php]> truncate categories;
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [r64_php]> select * from categories;
+Empty set (0.000 sec)
+
+MariaDB [r64_php]> drop table categories;
+Query OK, 0 rows affected (0.006 sec)
+
+MariaDB [r64_php]> show tables;
++-------------------+
+| Tables_in_r64_php |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.000 sec)
+
+MariaDB [r64_php]>
+

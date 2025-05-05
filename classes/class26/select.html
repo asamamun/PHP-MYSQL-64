@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sakila SELECT SQL Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 320px;
+      border-left: 5px solid #007acc;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .sql {
+      background: #f1f1f1;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h3>🔰 Complete SELECT Syntax</h3>
+    <div class="sql">
+SELECT [DISTINCT] column1, column2, ...
+FROM table_name
+[JOIN other_table ON condition]
+[WHERE condition]
+[GROUP BY column]
+[HAVING condition]
+[ORDER BY column ASC|DESC]
+[LIMIT number];
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>All Films</h3>
+    <div class="sql">SELECT * FROM film;</div>
+  </div>
+
+  <div class="card">
+    <h3>Films by Rating</h3>
+    <div class="sql">SELECT title, rating FROM film WHERE rating = 'PG-13';</div>
+  </div>
+
+  <div class="card">
+    <h3>Top 5 Longest Films</h3>
+    <div class="sql">SELECT title, length FROM film ORDER BY length DESC LIMIT 5;</div>
+  </div>
+
+  <div class="card">
+    <h3>Customer Emails by City</h3>
+    <div class="sql">SELECT c.first_name, c.last_name, c.email, ci.city
+FROM customer c
+JOIN address a ON c.address_id = a.address_id
+JOIN city ci ON a.city_id = ci.city_id
+ORDER BY ci.city;</div>
+  </div>
+
+  <div class="card">
+    <h3>Rental Count by Customer</h3>
+    <div class="sql">SELECT c.first_name, c.last_name, COUNT(r.rental_id) AS total_rentals
+FROM customer c
+JOIN rental r ON c.customer_id = r.customer_id
+GROUP BY c.customer_id
+ORDER BY total_rentals DESC;</div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue by Store</h3>
+    <div class="sql">SELECT s.store_id, SUM(p.amount) AS total_revenue
+FROM payment p
+JOIN staff st ON p.staff_id = st.staff_id
+JOIN store s ON st.store_id = s.store_id
+GROUP BY s.store_id;</div>
+  </div>
+
+  <div class="card">
+    <h3>Films with Actor “Tom Hanks”</h3>
+    <div class="sql">SELECT f.title
+FROM film f
+JOIN film_actor fa ON f.film_id = fa.film_id
+JOIN actor a ON fa.actor_id = a.actor_id
+WHERE a.first_name = 'TOM' AND a.last_name = 'HANKS';</div>
+  </div>
+
+  <div class="card">
+    <h3>Late Returns</h3>
+    <div class="sql">SELECT r.rental_id, f.title, r.return_date
+FROM rental r
+JOIN inventory i ON r.inventory_id = i.inventory_id
+JOIN film f ON i.film_id = f.film_id
+WHERE DATEDIFF(r.return_date, r.rental_date) > 7;</div>
+  </div>
+
+  <ul>
+    <li>select * from film order by length;</li>
+    <li>select * from film order by length desc;</li>
+    <li>select * from film order by length desc limit 10;</li>
+    <li>select * from film order by rental_rate desc limit 10;</li>
+    <li>select * from film order by rental_rate limit 10;</li>
+    <li>select film_id, title, length from film;</li>
+    <li>select film_id, title, length from film order by rental_rate desc limit 10;</li>
+    <li>select film_id, title, length, rental_rate from film order by rental_rate desc limit 10;</li>
+    <li>select * from film where rating = 'R';</li>
+    <li>select film_id, title, length, rental_rate from film where length>=120 and length<=140;</li>
+    <li>select film_id, title, length, rental_rate from film where length>=120 and length<=140 order by length;</li>
+    <li>select film_id, title, length, rental_rate from film where length>=120 and length<=140 order by length desc;</li>
+    <li>select film_id, title, length, rental_rate from film where length>=120 and length<=140 order by rental_rate, length desc;</li>
+    <li>select film_id, title, length, rental_rate from film where length>=120 and length<=140 order by rental_rate, length desc;</li>
+    <li>show films with rating PG or G with length more more than 120 mins <br>
+
+        select * from film where rating="PG" or rating="G" and length<=120;</li>
+  </ul>
+</body>
+</html>
