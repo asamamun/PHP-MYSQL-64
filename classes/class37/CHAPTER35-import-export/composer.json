@@ -1,0 +1,19 @@
+{
+    "name": "wdpf/chapter35-import-export",
+    "description": "import script",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wdpf\\Chapter35ImportExport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "asamamun",
+            "email": "asamamun@gmail.com"
+        }
+    ]
+}

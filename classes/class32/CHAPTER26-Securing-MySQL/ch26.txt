@@ -1,0 +1,271 @@
+
+Setting environment for using XAMPP for Windows.
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 428
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> tee ch26.txt
+Logging to file 'ch26.txt'
+MariaDB [(none)]> create user round64 identified by 'R64';
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [(none)]> bye
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'bye' at line 1
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 429
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exitl
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'exitl' at line 1
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u round64 -p
+Enter password: ***
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 430
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
++--------------------+
+1 row in set (0.001 sec)
+
+MariaDB [(none)]> use r64_php;
+ERROR 1044 (42000): Access denied for user 'round64'@'%' to database 'r64_php'
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 431
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant ALL PRIVILEGES on r64_php.* to round64;
+ERROR 1030 (HY000): Got error 176 "Read page with wrong checksum" from storage engine Aria
+MariaDB [(none)]> grant ALL PRIVILEGES on r64_php.* to 'round64';
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u round64 -p
+Enter password: ***
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 432
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| r64_php            |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [(none)]> use r64_php;
+Database changed
+MariaDB [r64_php]> show tables;
++-------------------+
+| Tables_in_r64_php |
++-------------------+
+| categories        |
+| manufacturer      |
+| products          |
+| recentsearch      |
+| sales             |
+| users             |
++-------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [r64_php]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 433
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> revoke drop on r64_php.* from 'round64';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u round64 -p
+Enter password: ***
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 434
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use r64_php;
+Database changed
+MariaDB [r64_php]> show tables;
++-------------------+
+| Tables_in_r64_php |
++-------------------+
+| categories        |
+| manufacturer      |
+| products          |
+| recentsearch      |
+| sales             |
+| users             |
++-------------------+
+6 rows in set (0.000 sec)
+
+MariaDB [r64_php]> drop table users;
+ERROR 1142 (42000): DROP command denied to user 'round64'@'localhost' for table `r64_php`.`users`
+MariaDB [r64_php]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 449
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant all privileges on jpp.* to 'genuity' identified by 'secret';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u genuity -p
+Enter password: ******
+ERROR 1045 (28000): Access denied for user 'genuity'@'localhost' (using password: YES)
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u genuity -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 451
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| jpp                |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [(none)]> use jpp;
+Database changed
+MariaDB [jpp]> show tables;
++------------------------+
+| Tables_in_jpp          |
++------------------------+
+| categories             |
+| education              |
+| failed_jobs            |
+| freelancerprofiles     |
+| freelancerskills       |
+| job_user               |
+| jobs                   |
+| migrations             |
+| password_reset_tokens  |
+| personal_access_tokens |
+| providerprofiles       |
+| skills                 |
+| subcategories          |
+| users                  |
+| works                  |
++------------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [jpp]> exit;
+Bye
+
+WDPF@DESKTOP-UIFA5QV d:\xampp8240
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 452
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show grants for genuity;
++--------------------------------------------------------------------------------------------------------+
+| Grants for genuity@%                                                                                   |
++--------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `genuity`@`%` IDENTIFIED BY PASSWORD '*14E65567ABDB5135D0CFD9A70B3032C179A49EE7' |
+| GRANT ALL PRIVILEGES ON `jpp`.* TO `genuity`@`%`                                                       |
++--------------------------------------------------------------------------------------------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [(none)]> show grants for round64;;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Grants for round64@%                                                                                                                                                                                                                         |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `round64`@`%` IDENTIFIED BY PASSWORD '*5E51C837D9B3FF773AD7E6E9A597BC94AD1DCF76'                                                                                                                                       |
+| GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER, DELETE HISTORY ON `r64_php`.* TO `round64`@`%` |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.000 sec)
+
+ERROR: No query specified
+
+MariaDB [(none)]>

@@ -1,0 +1,21 @@
+another example, participents(id, name, amount) and trunks(id, productname, participents_id), transaction(id, from_id, to_id, amount, date). trunks all all the products. if one participents wants to buy products from the trunk he will give the money to the owner. transaction will be logged in transaction table. can you provide the code in mysqli with transaction support?
+
+<hr>
+<pre>
+    Great scenario! You're essentially building a purchase system where:
+
+Products are in a trunks table.
+
+Buyers and owners are in the participents table.
+
+When someone (a buyer) buys a product from a trunk, they:
+
+Pay the owner (identified via participents_id in trunks).
+
+Have their amount reduced.
+
+The owner gets the money.
+
+The purchase is logged in the transaction table.
+</pre>
+<hr>

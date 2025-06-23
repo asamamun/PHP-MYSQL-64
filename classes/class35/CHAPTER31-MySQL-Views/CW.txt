@@ -1,0 +1,12 @@
+1. Create a view that displays all films with their titles, release years, and ratings.
+create view view1 as select title, release_year, rating from film
+
+2. Create a view that shows all customers with their first names, last names, and email addresses.
+3. Create a view that lists all actors with their first names and last names.
+4. Create a view that displays all store addresses with their address IDs and address details.
+5. Create a view that shows all film categories with their category IDs and names.
+6. Create a view that lists all rental records with rental IDs, rental dates, and return dates.
+7. Create a view that displays all staff members with their first names, last names, and store IDs.
+8. Create a view that shows all films with their titles, lengths, and rental rates.
+9. Create a view that lists all cities with their city IDs and city names.
+10. Create a view that displays all payment records with payment IDs, amounts, and payment dates.

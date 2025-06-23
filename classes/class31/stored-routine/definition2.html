@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MySQL Syntax and Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h3 {
+      color: #333;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h3>Declaring and Setting Variables in MySQL</h3>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>DECLARE variable_name datatype [DEFAULT value];
+SET variable_name = value;</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>DECLARE total INT DEFAULT 0;
+SET total = 5;</code></pre>
+  </div>
+
+  <div class="card">
+    <h3>The BEGIN and END Block in MySQL Stored Procedures</h3>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>BEGIN
+   -- statements
+END;</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>BEGIN
+   DECLARE total INT DEFAULT 0;
+   SET total = 10;
+END;</code></pre>
+  </div>
+
+  <div class="card">
+    <h3>IF-ELSEIF-ELSE in MySQL</h3>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>IF condition THEN
+   -- statements
+ELSEIF another_condition THEN
+   -- statements
+ELSE
+   -- statements
+END IF;</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>IF score &gt;= 90 THEN
+   SET grade = 'A';
+ELSEIF score &gt;= 80 THEN
+   SET grade = 'B';
+ELSE
+   SET grade = 'C';
+END IF;</code></pre>
+  </div>
+
+  <div class="card">
+    <h3>Iteration in MySQL</h3>
+    <p><strong>Types:</strong> LOOP, WHILE, REPEAT</p>
+    <p><strong>Example using WHILE:</strong></p>
+    <pre><code>DECLARE i INT DEFAULT 1;
+WHILE i &lt;= 5 DO
+   SET i = i + 1;
+END WHILE;</code></pre>
+  </div>
+
+  <div class="card">
+    <h3>LEAVE in MySQL</h3>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>LEAVE label_name;</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>my_loop: LOOP
+   IF counter &gt; 10 THEN
+      LEAVE my_loop;
+   END IF;
+   SET counter = counter + 1;
+END LOOP;</code></pre>
+  </div>
+
+  <div class="card">
+    <h3>LOOP in MySQL</h3>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>label: LOOP
+   -- statements
+   LEAVE label;
+END LOOP label;</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>my_loop: LOOP
+   SET counter = counter + 1;
+   IF counter &gt;= 5 THEN
+      LEAVE my_loop;
+   END IF;
+END LOOP my_loop;</code></pre>
+  </div>
+
+</body>
+</html>

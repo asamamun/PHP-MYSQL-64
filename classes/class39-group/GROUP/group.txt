@@ -1,0 +1,14 @@
+group 1(tigers): rakib, muntasir, rajon, shahinur
+op1: Suggestion Box for Organizations
+op2: Digital Time Capsule
+op3: Skill Progress Tracker for Students
+op4: **Donation Platform** - For charities to collect donations
+
+
+group 2(lions): imteaz, ishaq, imon, kabir
+op2: Simple E-commerce Store with POS
+
+group 3(unicorn): sume, rune, jhuma, aziz
+op1: Social Network Platform** - With profiles, friends, posts, and messaging
+
+

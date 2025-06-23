@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .card {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: #f1f5f9;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .code-block {
+      background: #e2e8f0;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="card">
+    <h2>What is a MySQL Cursor?</h2>
+    <p>A cursor in MySQL is a database object used to retrieve a set of rows and iterate over them row-by-row, usually inside a stored procedure.</p>
+    <p>Cursors are useful when you need to process each row individually (e.g., logging, conditional updates), which isn't possible with standard SQL alone.</p>
+    
+  <h2>📌 MySQL Cursor: Film Title Printer</h2>
+  <p>This stored procedure uses a cursor to fetch and print film titles from the <code>film</code> table in the Sakila DB:</p>
+  <div class="code-block">
+    DELIMITER // <br>
+    CREATE PROCEDURE print_film_titles()<br>
+    BEGIN<br>
+    &nbsp;&nbsp;DECLARE done INT DEFAULT FALSE;<br>
+    &nbsp;&nbsp;DECLARE film_title VARCHAR(255);<br><br>
+    &nbsp;&nbsp;DECLARE film_cursor CURSOR FOR<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;SELECT title FROM film;<br><br>
+    &nbsp;&nbsp;DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;<br><br>
+    &nbsp;&nbsp;OPEN film_cursor;<br>
+    &nbsp;&nbsp;read_loop: LOOP<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;FETCH film_cursor INTO film_title;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;IF done THEN<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LEAVE read_loop;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;END IF;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-- Here you can use SELECT or INSERT to log the film_title<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;SELECT film_title;<br>
+    &nbsp;&nbsp;END LOOP;<br>
+    &nbsp;&nbsp;CLOSE film_cursor;<br>
+    END;// <br>
+    DELIMITER ;
+  </div>
+</div>
+<div class="card">
+    <h2>The life cycle of a MySQL cursor must proceed in this order(From Book page 771):</h2>
+<ol>
+  <li>Declare the cursor with the <code>DECLARE</code> statement.</li>
+  <li>Open the cursor with the <code>OPEN</code> statement.</li>
+  <li>Fetch data from the cursor with the <code>FETCH</code> statement.</li>
+  <li>Close the cursor with the <code>CLOSE</code> statement.</li>
+</ol>
+</div>
+<div class="card">
+  <h2>🔁 MySQL Cursor: 5 Essential Steps</h2>
+  <ol>
+    <li><strong>1. Declare Variables</strong>  
+      <br>– To hold column values from the result set (e.g., film_title).
+    </li>
+    <li><strong>2. Declare the Cursor</strong>  
+      <br>– Use <code>DECLARE cursor_name CURSOR FOR SELECT ...</code>.
+    </li>
+    <li><strong>3. Declare a Handler</strong>  
+      <br>– To handle the end of the result set using <code>NOT FOUND</code>.
+    </li>
+    <li><strong>4. Open the Cursor</strong>  
+      <br>– Use <code>OPEN cursor_name;</code> to activate it.
+    </li>
+    <li><strong>5. Fetch in Loop & Close</strong>  
+      <br>– Use a <code>LOOP</code> or <code>WHILE</code> to FETCH rows and process them.
+      <br>– Use <code>CLOSE cursor_name;</code> after you're done.
+    </li>
+  </ol>
+</div>
+</body>
+</html>

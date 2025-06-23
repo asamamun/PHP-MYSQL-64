@@ -1,0 +1,21 @@
+DELIMITER $$
+
+CREATE TRIGGER before_insert_ticket
+BEFORE INSERT ON tickets
+FOR EACH ROW
+BEGIN
+  DECLARE tech_available TINYINT;
+
+  -- Get the availability of the technician being assigned
+  SELECT available INTO tech_available
+  FROM technicians
+  WHERE id = NEW.tech_id;
+
+  -- Check if technician is unavailable (0)
+  IF tech_available = 0 THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Cannot assign ticket to an unavailable technician.';
+  END IF;
+END$$
+
+DELIMITER ;

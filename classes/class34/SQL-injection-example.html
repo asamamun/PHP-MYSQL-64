@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="font-family:sans-serif; border:1px solid #ccc; padding:20px; border-radius:10px; max-width:600px; background:#f9f9f9;">
+  <h2 style="color:#b30000;">💥 SQL Injection Demo</h2>
+  <p><strong>🔐 Purpose:</strong> Demonstrate how a simple PHP form can be vulnerable to SQL injection when user input is not properly sanitized.</p>
+
+  <h3 style="color:#333;">🧪 Vulnerable Code:</h3>
+  <pre style="background:#eee; padding:10px; border-radius:5px; overflow:auto;">
+$conn = new mysqli("localhost", "root", "", "r64_exam");
+
+if (isset($_POST['add'])) {
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+
+    // ⚠️ Unsafe: allows SQL injection
+    $conn->multi_query("INSERT INTO products (name, price, quantity) VALUES ('$name', '$price', '$quantity')");
+}
+  </pre>
+
+  <h3 style="color:#333;">💣 Injection Example:</h3>
+  <p>Enter the following into the <code>Name</code> field of the product form:</p>
+  <pre style="background:#fff3cd; padding:10px; border-left:5px solid #ffc107; border-radius:3px;">
+Test','',''); DROP TABLE products; --
+  </pre>
+
+  <h3 style="color:#333;">🚨 What Happens:</h3>
+  <ul>
+    <li>SQL is broken into multiple commands.</li>
+    <li>The first <code>INSERT</code> ends prematurely.</li>
+    <li><code>DROP TABLE products;</code> deletes your entire products table.</li>
+    <li><code>--</code> comments out the rest of the query.</li>
+  </ul>
+
+  <h3 style="color:#198754;">✅ Protection:</h3>
+  <p>Use <strong>Prepared Statements</strong> to prevent SQL injection.</p>
+  <pre style="background:#e6ffed; padding:10px; border-left:5px solid #28a745; border-radius:3px;">
+$stmt = $conn->prepare("INSERT INTO products (name, price, quantity) VALUES (?, ?, ?)");
+$stmt->bind_param("sdi", $name, $price, $quantity);
+$stmt->execute();
+  </pre>
+
+  <p style="margin-top:20px; font-size:0.9em; color:#555;">
+    ⚠️ <strong>Note:</strong> This demonstration is for educational purposes only. Never allow unsanitized input into your database in production.
+  </p>
+</div>
+
+</body>
+</html>

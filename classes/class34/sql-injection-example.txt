@@ -1,0 +1,14 @@
+INSERT INTO products (name, price, quantity) VALUES ('ppp', '99', '99')
+
+Test'); DROP TABLE products; --
+
+INSERT INTO products (name, price, quantity) VALUES ('Test'); DROP TABLE products; --', '99', '99')
+
+INSERT INTO products (name, price, quantity) VALUES ('Test'); DROP TABLE products; --', '100', '5')
+
+Test','',''); DROP TABLE products; --
+
+
+INSERT INTO products (name, price, quantity) VALUES ('Test','',''); DROP TABLE products; --', '100', '5')
+
+INSERT INTO products (name, price, quantity) VALUES ('Test\',\'\',\'\'); DROP TABLE products; --', '100', '5')

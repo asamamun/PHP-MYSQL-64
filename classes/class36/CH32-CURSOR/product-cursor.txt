@@ -1,0 +1,50 @@
+i need stored procedure and cursor where products price will be calculate in the following rules:
+if price is less than 1000 , price will be same,
+if price id greater than or equal to 1000 , price will increase 5%,
+if price id greater than or equal to 10000 , price will increase 10%,
+if price id greater than or equal to 50000 , price will increase 20%,
+if price id greater than or equal to 100000 , price will increase 50%
+
+it will work when i call the procedure
+
+
+DELIMITER //
+
+CREATE PROCEDURE update_product_prices()
+BEGIN
+  DECLARE done INT DEFAULT FALSE;
+  DECLARE p_id INT;
+  DECLARE p_price DECIMAL(10,2);
+
+  DECLARE cur CURSOR FOR
+    SELECT id, price FROM products;
+
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+  OPEN cur;
+
+  read_loop: LOOP
+    FETCH cur INTO p_id, p_price;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+
+    IF p_price >= 100000 THEN
+      SET p_price = p_price * 1.50;
+    ELSEIF p_price >= 50000 THEN
+      SET p_price = p_price * 1.20;
+    ELSEIF p_price >= 10000 THEN
+      SET p_price = p_price * 1.10;
+    ELSEIF p_price >= 1000 THEN
+      SET p_price = p_price * 1.05;
+    ELSE
+      SET p_price = p_price;
+    END IF;
+
+    UPDATE products SET price = p_price WHERE id = p_id;
+  END LOOP;
+
+  CLOSE cur;
+END //
+
+DELIMITER ;

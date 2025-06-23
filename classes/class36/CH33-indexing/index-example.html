@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Database indexing and searching</h1>
+    <h2>An index is an ordered (or indexed) subset of table columns, with each row entry 
+pointing to its corresponding table row. Generally speaking, introducing indexing into 
+your MySQL database development strategy gives you three advantages:</h2>
+<ul>
+    <li>Query optimization</li>
+    <li>Uniqueness</li>
+    <li>Text searching: full-text indexing</li>
+</ul>
+
+<h2>Example of full text index</h2>
+<pre>
+<code>
+SELECT * FROM products WHERE MATCH(description) AGAINST ('phone');
+SELECT * FROM products WHERE MATCH(description) AGAINST ('processor');
+SELECT * FROM products WHERE MATCH(name,description) AGAINST ('processor');
+
+SELECT * FROM products WHERE description LIKE '%processor%';
+</code>
+</pre>
+
+</body>
+</html>

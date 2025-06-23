@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .card {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: #f8f9fa;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .code-block {
+      background: #eee;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="card">
+    <h3>Also known as a virtual table, a view consists of a set of rows that is returned if a 
+particular query is executed. A view isn’t a copy of the data represented by the query, 
+but rather it simplifies the way in which that data can be retrieved by making the query 
+available via an alias.</h3>
+<h4>Advantages of views</h4>
+<ul>
+    <li>Simplicity</li>
+    <li>Security</li>
+    <li>Maintainability</li>
+
+</ul>
+<div class="code-block">
+    <pre>
+CREATE
+ [OR REPLACE]
+ [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED }]
+ [DEFINER = { user | CURRENT_USER }]
+ [SQL SECURITY { DEFINER | INVOKER }]
+ VIEW view_name [(column_list)]
+ AS select_statement
+ [WITH [CASCADED | LOCAL] CHECK OPTION]
+    </pre>
+</div>
+<div class="code-block">
+    <pre>
+        CREATE VIEW technician_ticket_summary AS
+SELECT 
+    t.id AS technician_id,
+    COUNT(k.id) AS total_tickets_assigned
+FROM 
+    technicians t
+LEFT JOIN 
+    tickets k ON t.id = k.tech_id
+GROUP BY 
+    t.id;
+    </pre>
+</div>
+<div class="code-block">
+    <pre>
+        create or replace view product_under_1k as
+        select * from products where price < 1000
+    </pre>
+</div>
+<hr>
+<pre>
+    select `a`.`actor_id` AS `actor_id`,`a`.`first_name` AS `first_name`,`a`.`last_name` AS `last_name`,group_concat(distinct concat(`c`.`name`,': ',(select group_concat(`f`.`title` order by `f`.`title` ASC separator ', ') from ((`film` `f` join `film_category` `fc` on(`f`.`film_id` = `fc`.`film_id`)) join `film_actor` `fa` on(`f`.`film_id` = `fa`.`film_id`)) where `fc`.`category_id` = `c`.`category_id` and `fa`.`actor_id` = `a`.`actor_id`)) order by `c`.`name` ASC separator '; ') AS `film_info` from (((`actor` `a` left join `film_actor` `fa` on(`a`.`actor_id` = `fa`.`actor_id`)) left join `film_category` `fc` on(`fa`.`film_id` = `fc`.`film_id`)) left join `category` `c` on(`fc`.`category_id` = `c`.`category_id`)) group by `a`.`actor_id`,`a`.`first_name`,`a`.`last_name`
+</pre>
+</div>
+</body>
+</html>

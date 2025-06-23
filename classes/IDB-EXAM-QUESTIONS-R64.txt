@@ -1,0 +1,83 @@
+1.All type of selectors available in jQuery, always start with --
+*Ans: $ [Page: 04]
+
+2.Which method fetch & sets the value of an attribute from the first element in all matched elements?
+*Ans: attr()
+
+3.Which method can be used to apply defined style sheets onto all the matched elements?
+*Ans: addClass( classes ) [Page: 10]
+
+
+
+4.Which method append content to the inside of every matched element.?
+*Ans: append( content )
+
+
+5.To load any static or dynamic data using JQuery AJAX, JQuery provides which method-- 
+*Ans: load() [Page: 70]     
+
+
+
+
+
+MySql
+1.How to Convert ISAM Tables to MyISAM Tables?
+*Ans: ALTER TABLE table_name TYPE=MyISAM;
+
+
+2.Which function is responsible for closing the connection from (mysqli) server?
+*Ans: close();
+
+
+3.Which of the following statement is true about ‘view’?
+*Ans: A view consists of a set of rows that is returned if a particular query is executed  [page: 660]
+
+4.The database administrator uses the _____ command to revoke privileges from users?
+*Ans: REVOKE
+
+
+5.We use the _____ clause to list data in a specific order.
+*Ans: ORDER BY
+
+6.Which SQL statement is used to insert a new data in a database?
+*Ans:  INSERT INTO
+
+7.Which command is used to delete an existing stored procedure?
+*Ans: DROP PROCEDURE procedure_name  
+
+
+8.What are the Advantages of MySql Database Index? (Choose Two)
+Ans: Uniqueness & Query Optimization  [Page: 693]     
+
+9.--safe-updates, -U: 
+Ans: preventing accidental mass deletions or modifications. [Page: 515]
+	
+10.Which method retrieves the total number of rows affected by an INSERT, UPDATE, or DELETE query:
+*Ans: affected_rows.
+
+
+11.What is the advantage of prepared statement?
+	    	Ans: eliminate overhead
+
+12.Which clause prevent any subsequent view update from changing any value in the column?
+Ans:  WITH CHECK OPTION  [Page: 665]
+
+
+
+
+13. What does SQL stand for?
+Ans:Structured Query Language
+
+14.Select all the correct code statements from the following:
+• [✓] CREATE TABLE product ( rowID SMALLINT NOT NULL AUTO_INCREMENT PRIMARY 
+KEY, sku CHAR(8) NOT NULL, name VARCHAR(35) NOT NULL, price DECIMAL(6,2) ) 
+ENGINE=MyISAM;
+• [✓] CREATE TABLE product ( rowID SMALLINT NOT NULL AUTO_INCREMENT PRIMARY 
+KEY, sku CHAR(8) NOT NULL, name VARCHAR(35) NOT NULL, price DECIMAL(6,2) )
+• [✓] CREATE TABLE product ( rowID SMALLINT, sku CHAR(8), name VARCHAR(35), price 
+DECIMAL(6,2) ) ENGINE=InnoDB;
+• All of the above
+
+
+15.Which following statement is true about transection?
+*Ans: A transaction is an ordered group of database operations that are treated as a single unit

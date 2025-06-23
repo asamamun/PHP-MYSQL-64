@@ -1,0 +1,18 @@
+CREATE FUNCTION catname(cat_id INT)
+RETURNS VARCHAR(60)
+DETERMINISTIC
+BEGIN
+  DECLARE cat_name VARCHAR(60);
+
+  SELECT name INTO cat_name FROM categories  WHERE id = cat_id  LIMIT 1;
+
+  RETURN cat_name;
+END//
+
+
+SELECT id, `name`,`description`,`price`,`quantity`,catname(`category_id`) as category FROM `products` WHERE 1
+
+SELECT 
+  actor_id,
+  CONCAT(first_name, ' ', last_name) AS full_name
+FROM actor;

@@ -1,0 +1,15 @@
+CREATE
+ [DEFINER = { USER | CURRENT_USER }]
+ TRIGGER <trigger name>
+ { BEFORE | AFTER }
+ { INSERT | UPDATE | DELETE }
+ ON <table name>
+ FOR EACH ROW
+ [{ FOLLOWS | PRECEDES } <other_trigger_name>]
+ <triggered SQL statement>
+
+create trigger ad_manu_table after delete on manufacturer
+for each row
+begin
+delete from manufact_product where manufacture_id = old.id;
+end//
